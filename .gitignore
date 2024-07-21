@@ -1,0 +1,13 @@
+.~*
+*.exe
+*.exe~
+*.orig
+.*.swp
+.DS_Store
+.vscode/
+
+*.pyc
+*.pyo
+__pycache__/
+
+tmp/

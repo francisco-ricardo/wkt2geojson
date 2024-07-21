@@ -25,6 +25,10 @@ GEOJSON is a format for encoding a variety of geographic data structures using J
 
 **This project is currently under development and is not yet complete.** We are actively working on implementing the conversion features and refining the parsing process. Updates and improvements are ongoing.
 
+## Research Context
+
+This converter project was utilized during the research for the master's thesis of Francisco Ricardo Taborda Aguiar at the Federal University of Paraná. The thesis is titled **"Overcoming Synchronization Challenges in Machining Digital Twins: Transpiling Legacy NC Dialects to Enhance Interoperability."** The project played a role in addressing synchronization and interoperability issues by providing a tool for converting spatial data formats.
+
 ## Getting Started
 
 ### Prerequisites
@@ -40,6 +44,18 @@ GEOJSON is a format for encoding a variety of geographic data structures using J
    ```bash
    git clone https://github.com/yourusername/wkt2geojson.git
    cd wkt2geojson
+
+   docker build -t wkt2geojson:latest .
+
+   make run
+   make post_install
+
+   sudo cp ./etc/logrotate.d/wkt2geojson /etc/logrotate.d/
+   sudo chmod 0644 /etc/logrotate.d/wkt2geojson
+   sudo logrotate -d /etc/logrotate.d/wkt2geojson
+   sudo logrotate /etc/logrotate.d/wkt2geojson
+
+   docker commit --message='Set Timezone' `docker ps -aqf "name=wkt2geojson"` wkt2geojson:latest
    ```
 
 2. **Build the Project:**
@@ -57,38 +73,17 @@ Replace input.wkt with your WKT file and output.geojson with the desired output 
 
 Note: As the project is still in development, the functionality may be incomplete or subject to changes.
 
-### CRIACAO DA IMAGEM
+## Usage
 
-A rotina abaixo descreve o processo para as intalacoes dos softwares e a criacao da imagem.
+Once the project is complete, you will be able to use the wkt2geojson executable to convert WKT files to GEOJSON. The command-line interface will accept an input WKT file and produce a GEOJSON file.
+
+Example:
 
 ```bash
-
-cd /workspace
-git clone [URL] 
-cd /workspace/wkt2geojson
-
-# Dirs
-sudo ./scripts/host/create_dirs.pl
-
-# Criacao da imagem
-docker build -t wkt2geojson:latest .
-
-# Sobe o container
-make run
-make post_install
-
-# Log: logrotate
-sudo cp ./etc/logrotate.d/wkt2geojson /etc/logrotate.d/
-sudo chmod 0644 /etc/logrotate.d/wkt2geojson
-sudo logrotate -d /etc/logrotate.d/wkt2geojson
-sudo logrotate /etc/logrotate.d/wkt2geojson
-
-# Grava a imagem
-docker commit --message='Set Timezone' `docker ps -aqf "name=wkt2geojson"` wkt2geojson:latest
-
+./wkt2geojson example.wkt example.geojson
 ```
 
-## SOURCE CODE ORGANIZATION
+## Project Structure
 
 - features.c: entry point
 - features.l: scanner

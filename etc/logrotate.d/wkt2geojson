@@ -6,7 +6,7 @@
     missingok
     copytruncate
     su root root
-    create 0666 root root
+    create 0644 root root
     rotate 5
-    size 128M
+    size 64M
 }

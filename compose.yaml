@@ -1,0 +1,25 @@
+services:
+
+  wkt2geojson:
+
+    container_name: wkt2geojson
+    image: wkt2geojson:latest
+    init: true
+    network_mode: host
+    ipc: host
+    restart: unless-stopped
+    shm_size: '2gb'
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined    
+
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      shm_size: '1gb'
+
+    env_file:
+      - ./etc/env.list.common      
+    
+    volumes:      
+      - .:/app

@@ -1,0 +1,21 @@
+services:
+
+  wkt2geojson:
+
+    container_name: wkt2geojson
+    image: wkt2geojson:latest
+    init: true
+    network_mode: host
+    ipc: host
+    restart: unless-stopped
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined    
+
+    build: 
+      context: .
+      dockerfile: Dockerfile
+
+    environment:
+      - APP_ROOT_DIR=/app
+      - LOG_FILE=/var/log/wkt2geojson/wkt2geojson.log

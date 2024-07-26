@@ -8,7 +8,6 @@ services:
     network_mode: host
     ipc: host
     restart: unless-stopped
-    shm_size: '2gb'
     security_opt:
       - seccomp:unconfined
       - apparmor:unconfined    
@@ -16,10 +15,10 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-      shm_size: '1gb'
 
-    env_file:
-      - ./etc/env.list.common      
-    
+    environment:
+      - APP_ROOT_DIR=/app
+      - LOG_FILE=/var/log/wkt2geojson/wkt2geojson.log
+
     volumes:      
       - .:/app

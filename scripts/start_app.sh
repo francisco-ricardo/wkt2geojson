@@ -1,4 +1,4 @@
-#!/bin/csh -f
+#!/bin/sh
 
 # ABSTRACT: Script de inicializacao do container
 #
@@ -6,8 +6,6 @@
 # iniquidades; o castigo que nos traz a paz estava sobre ele, e pelas
 # suas pisaduras fomos sarados." Isaias 53.5
 
-source /etc/csh.cshrc
-
-exec sh -c "while true; do sleep 1; done"
+while true; do sleep 1; done
 
 # EOF

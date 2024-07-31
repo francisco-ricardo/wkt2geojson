@@ -2,10 +2,11 @@ FROM debian:latest
 
 RUN apt update -y && export DEBIAN_FRONTEND=noninteractive && apt install -y \
     build-essential \
+    vim \
     flex \
     bison \
     valgrind \
     && rm -Rf /var/lib/apt/lists/*
 
-ENTRYPOINT ["/app/docker-entrypoint.sh"]
-CMD ["/app/scripts/container/start_app.csh"]
+ENTRYPOINT ["/app/scripts/docker-entrypoint.sh"]
+CMD ["/app/scripts/start_app.sh"]

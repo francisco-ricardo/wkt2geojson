@@ -44,8 +44,10 @@ This converter project was utilized during the research for the master's thesis 
    ```bash
    git clone https://github.com/yourusername/wkt2geojson.git
    cd wkt2geojson
+   
+   docker-compose -f compose-dev.yaml up --build --detach
 
-   docker build -t wkt2geojson:latest .
+
 
    make run
    make post_install

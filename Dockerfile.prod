@@ -1,0 +1,12 @@
+FROM debian:latest
+
+RUN apt update -y && export DEBIAN_FRONTEND=noninteractive && apt install -y \
+    build-essential \
+    && rm -Rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY . .
+
+ENTRYPOINT ["/app/scripts/docker-entrypoint.sh"]
+CMD ["/app/scripts/start_app.sh"]

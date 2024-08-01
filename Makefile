@@ -2,7 +2,7 @@
 # make help
 #
 
-.PHONY: all run post_install push deploy help
+.PHONY: all run deploy help
 
 CONTAINER ?= wkt2geojson
 
@@ -17,11 +17,6 @@ run:
 	docker exec -u 0 $(CONTAINER) $(APP_ROOT_DIR)/scripts/container/install_dev_packages.sh	
 
 
-# target: post_install - Executa os scripts pos criacao da imagem
-post_install:
-	docker exec -u 0 $(CONTAINER) $(APP_ROOT_DIR)/scripts/container/set_timezone.sh
-
-
 # target: deploy - Copia o conteudo relevante do diretorio APP_ROOT_DIR para um host remoto
 deploy: guard-user guard-host
 	$(APP_ROOT_DIR)/scripts/host/deploy_app.sh -u $(user) -h $(host)
@@ -30,11 +25,6 @@ deploy: guard-user guard-host
 # target: chown - Ajusta o owner dos arquivos para $USER
 chown:
 	sudo chown -R 1000:1000 $(APP_ROOT_DIR)
-
-
-# target: push - Push para os repositorios remotos do Git
-push:
-	git push origin $(branch)
 
 
 # Aborta se a variavel especificada nao estiver definida

@@ -1,20 +1,16 @@
+version: "3.3"
+
 services:
 
   wkt2geojson:
 
     container_name: wkt2geojson
     image: wkt2geojson:latest
-    init: true
-    network_mode: host
-    ipc: host
     restart: unless-stopped
-    security_opt:
-      - seccomp:unconfined
-      - apparmor:unconfined    
 
     build: 
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
 
     environment:
       - APP_ROOT_DIR=/app

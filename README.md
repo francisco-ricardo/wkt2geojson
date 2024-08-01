@@ -42,28 +42,19 @@ This converter project was utilized during the research for the master's thesis 
 1. **Clone the Repository:**
 
    ```bash
+
    git clone https://github.com/yourusername/wkt2geojson.git
    cd wkt2geojson
    
-   docker-compose -f compose-dev.yaml up --build --detach
-
-
-
-   make run
-   make post_install
-
-   sudo cp ./etc/logrotate.d/wkt2geojson /etc/logrotate.d/
-   sudo chmod 0644 /etc/logrotate.d/wkt2geojson
-   sudo logrotate -d /etc/logrotate.d/wkt2geojson
-   sudo logrotate /etc/logrotate.d/wkt2geojson
-
-   docker commit --message='Set Timezone' `docker ps -aqf "name=wkt2geojson"` wkt2geojson:latest
+   docker-compose -f compose-prod.yaml up --build
+ 
    ```
 
 2. **Build the Project:**
 
   ```bash
   make
+  ```
 
 3. **Run the converter:**
 

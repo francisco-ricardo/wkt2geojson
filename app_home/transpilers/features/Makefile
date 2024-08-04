@@ -5,8 +5,7 @@
 .PHONY: all build compile clean test1 test2 help
 
 CONTAINER ?= wkt2geojson
-ROOT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-TRANSPILERS_DIR = $(ROOT_DIR)/app_home/transpilers
+TRANSPILERS_DIR = $(APP_ROOT_DIR)/app_home/transpilers
 
 GCC_FLAGS = -Wall \
           -Wextra \
@@ -45,20 +44,20 @@ clean:
 	rm -f $(TRANSPILERS_DIR)/features/lex.yy.c
 	rm -f $(TRANSPILERS_DIR)/features/features.tab.h
 	rm -f $(TRANSPILERS_DIR)/features/features.tab.c
-	rm -f $(ROOT_DIR)/app_home/bin/features
+	rm -f $(APP_ROOT_DIR)/app_home/bin/features
 
 
 # target: compile - Compile the `features` transpiler
 compile: lex.yy.c features.tab.h
 	gcc $(GCC_FLAGS) \
-		-o $(ROOT_DIR)/app_home/bin/features \
+		-o $(APP_ROOT_DIR)/app_home/bin/features \
 		$(TRANSPILERS_DIR)/features/features.c \
 		features.tab.c \
 		lex.yy.c \
 		-I$(TRANSPILERS_DIR)/include \
 		$(TRANSPILERS_DIR)/include/gjs.c
 
-	chmod 0755 $(ROOT_DIR)/app_home/bin/features
+	chmod 0755 $(APP_ROOT_DIR)/app_home/bin/features
 
 
 # Generate the `features` scanner
@@ -73,51 +72,51 @@ features.tab.h:
 
 # target: test2 - Compile `test2` program and run into a Valgrind sandbox for testing
 test2: clean lex.yy.c features.tab.h
-	rm -f $(ROOT_DIR)/tmp/test2.log
-	rm -f $(ROOT_DIR)/tmp/test2.json
+	rm -f $(APP_ROOT_DIR)/tmp/test2.log
+	rm -f $(APP_ROOT_DIR)/tmp/test2.json
 
 	gcc $(GCC_FLAGS) \
-		-o $(ROOT_DIR)/app_home/bin/features \
+		-o $(APP_ROOT_DIR)/app_home/bin/features \
 		$(TRANSPILERS_DIR)/features/features.c \
 		features.tab.c \
 		lex.yy.c \
 		-I$(TRANSPILERS_DIR)/include \
 		$(TRANSPILERS_DIR)/include/gjs.c
 
-	chmod 0755 $(ROOT_DIR)/app_home/bin/features
+	chmod 0755 $(APP_ROOT_DIR)/app_home/bin/features
 
 	valgrind --trace-children=yes \
 		--track-fds=yes \
 		--track-origins=yes \
 		--leak-check=full \
 		--show-leak-kinds=all \
-		$(ROOT_DIR)/app_home/bin/features \
-		$(ROOT_DIR)/tmp/features2.mc \
-		$(ROOT_DIR)/tmp/test2.log \
-		$(ROOT_DIR)/tmp/test2.json
+		$(APP_ROOT_DIR)/app_home/bin/features \
+		$(APP_ROOT_DIR)/tmp/features2.mc \
+		$(APP_ROOT_DIR)/tmp/test2.log \
+		$(APP_ROOT_DIR)/tmp/test2.json
 
 
 # target: test1 - Compile `test1` program and run into a Valgrind sandbox for testing
 test1:
-	rm -f $(ROOT_DIR)/app_home/bin/test1	
+	rm -f $(APP_ROOT_DIR)/app_home/bin/test1	
 
 	gcc $(GCC_FLAGS) \
-		-o $(ROOT_DIR)/app_home/bin/test1 \
+		-o $(APP_ROOT_DIR)/app_home/bin/test1 \
 		$(TRANSPILERS_DIR)/features/test1.c \
 		-I$(TRANSPILERS_DIR)/include \
 		$(TRANSPILERS_DIR)/include/gjs.c
 
-	chmod 0755 $(ROOT_DIR)/app_home/bin/test1
+	chmod 0755 $(APP_ROOT_DIR)/app_home/bin/test1
 
 	valgrind --trace-children=yes \
 		--track-fds=yes \
 		--track-origins=yes \
 		--leak-check=full \
 		--show-leak-kinds=all \
-		$(ROOT_DIR)/app_home/bin/test1 \
-		$(ROOT_DIR)/tmp/features.lc \
-		$(ROOT_DIR)/tmp/test1.log \
-		$(ROOT_DIR)/tmp/test1.out
+		$(APP_ROOT_DIR)/app_home/bin/test1 \
+		$(APP_ROOT_DIR)/tmp/features.lc \
+		$(APP_ROOT_DIR)/tmp/test1.log \
+		$(APP_ROOT_DIR)/tmp/test1.out
 
 
 # target: help - Mostra os targets que sao executaveis

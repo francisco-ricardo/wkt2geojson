@@ -85,3 +85,8 @@ Example:
 - features.tab.c: LR Parser generated from the parser
 - features.tab.h: LR Parser header
 - Makefile: targets
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+

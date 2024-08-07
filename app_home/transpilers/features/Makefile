@@ -114,7 +114,7 @@ test1:
 		--leak-check=full \
 		--show-leak-kinds=all \
 		$(APP_ROOT_DIR)/app_home/bin/test1 \
-		$(APP_ROOT_DIR)/tmp/features.lc \
+		$(APP_ROOT_DIR)/app_home/samples/features.lc \
 		$(APP_ROOT_DIR)/tmp/test1.log \
 		$(APP_ROOT_DIR)/tmp/test1.out
 

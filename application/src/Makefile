@@ -2,7 +2,7 @@
 #
 # make help
 #
-.PHONY: all build compile clean test help
+.PHONY: all build compile clean test test help
 
 CONTAINER ?= wkt2geojson
 
@@ -91,6 +91,12 @@ test: clean lex.yy.c wkt2geojson.tab.h
 		$(APP_ROOT_DIR)/application/samples/wkt/ex1 \
 		$(APP_ROOT_DIR)/tmp/test.log \
 		$(APP_ROOT_DIR)/tmp/test.json
+
+test2:
+	flex wkt2geojson.l
+	#bison -d -Wcounterexamples wkt2geojson.y
+	bison -d wkt2geojson.y
+	gcc -o wkt_parser wkt2geojson.tab.c lex.yy.c -lfl
 
 
 # target: help - Mostra os targets que sao executaveis

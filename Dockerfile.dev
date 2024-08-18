@@ -6,6 +6,7 @@ RUN apt update -y && export DEBIAN_FRONTEND=noninteractive && apt install -y \
     flex \
     bison \
     valgrind \
+    jq \
     && rm -Rf /var/lib/apt/lists/*
 
 ENTRYPOINT ["/app/scripts/docker-entrypoint.sh"]

@@ -3,17 +3,15 @@
 %}
 
 %%
-
-"POINT"       { return POINT; }
-"LINESTRING"  { return LINESTRING; }
-"POLYGON"     { return POLYGON; }
-[0-9]+(\.[0-9]+)?  { yylval.dval = atof(yytext); return NUMBER; }
-","           { return ','; }
-"("           { return '('; }
-")"           { return ')'; }
-[ \t\n\r]+    { /* Ignore whitespaces */ }
-.             { /* Ignore everything else */ }
-
+"POINT"        { return POINT; }
+"LINESTRING"   { return LINESTRING; }
+"POLYGON"      { return POLYGON; }
+[0-9]+(\.[0-9]+)?    { yylval.dval = atof(yytext); return NUMBER; }
+[ \t\n\r]+     { /* ignorar espaços em branco e quebras de linha */ }
+","            { return ','; }
+"("            { return '('; }
+")"            { return ')'; }
+.              { return yytext[0]; }
 %%
 
 int yywrap() {

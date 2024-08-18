@@ -362,8 +362,8 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[36] =
     {   0,
-        0,    0,   11,    9,    8,    8,    6,    7,    5,    4,
-        9,    9,    8,    0,    4,    0,    0,    4,    0,    0,
+        0,    0,   11,    9,    5,    5,    7,    8,    6,    4,
+        9,    9,    5,    0,    4,    0,    0,    4,    0,    0,
         0,    0,    0,    0,    0,    1,    0,    0,    0,    0,
         3,    0,    0,    2,    0
     } ;
@@ -681,8 +681,7 @@ YY_DECL
 	{
 #line 5 "wkt2geojson.l"
 
-
-#line 686 "lex.yy.c"
+#line 685 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -741,56 +740,56 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 7 "wkt2geojson.l"
+#line 6 "wkt2geojson.l"
 { return POINT; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 8 "wkt2geojson.l"
+#line 7 "wkt2geojson.l"
 { return LINESTRING; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 9 "wkt2geojson.l"
+#line 8 "wkt2geojson.l"
 { return POLYGON; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 10 "wkt2geojson.l"
+#line 9 "wkt2geojson.l"
 { yylval.dval = atof(yytext); return NUMBER; }
 	YY_BREAK
 case 5:
+/* rule 5 can match eol */
+YY_RULE_SETUP
+#line 10 "wkt2geojson.l"
+{ /* ignorar espaços em branco e quebras de linha */ }
+	YY_BREAK
+case 6:
 YY_RULE_SETUP
 #line 11 "wkt2geojson.l"
 { return ','; }
 	YY_BREAK
-case 6:
+case 7:
 YY_RULE_SETUP
 #line 12 "wkt2geojson.l"
 { return '('; }
 	YY_BREAK
-case 7:
+case 8:
 YY_RULE_SETUP
 #line 13 "wkt2geojson.l"
 { return ')'; }
 	YY_BREAK
-case 8:
-/* rule 8 can match eol */
-YY_RULE_SETUP
-#line 14 "wkt2geojson.l"
-{ /* Ignore whitespaces */ }
-	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 15 "wkt2geojson.l"
-{ /* Ignore everything else */ }
+#line 14 "wkt2geojson.l"
+{ return yytext[0]; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 17 "wkt2geojson.l"
+#line 15 "wkt2geojson.l"
 ECHO;
 	YY_BREAK
-#line 794 "lex.yy.c"
+#line 793 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1795,7 +1794,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 17 "wkt2geojson.l"
+#line 15 "wkt2geojson.l"
 
 
 int yywrap() {

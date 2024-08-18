@@ -22,21 +22,30 @@ char* to_geojson_polygon(const char* coordinates_list);
 %token <dval> NUMBER
 %token POINT LINESTRING POLYGON
 
-%type <sval> coordinate coordinate_list coordinate_list_list point linestring polygon
+%type <sval> coordinate coordinate_list coordinate_list_list point linestring polygon geometry_list
 
 %%
 
 geometry:
-    point       { printf("%s\n", $1); free($1); }
-  | linestring  { printf("%s\n", $1); free($1); }
-  | polygon     { printf("%s\n", $1); free($1); }
+    geometry_list
+    ;
+
+geometry_list:
+    point
+  | linestring
+  | polygon
+  | geometry_list point
+  | geometry_list linestring
+  | geometry_list polygon
   ;
 
 point:
     POINT '(' coordinate ')'  
     {
         $$ = to_geojson_point($3);
+        printf("%s\n", $$);
         free($3);
+        free($$);
     }
   ;
 
@@ -44,7 +53,9 @@ linestring:
     LINESTRING '(' coordinate_list ')'  
     {
         $$ = to_geojson_linestring($3);
+        printf("%s\n", $$);
         free($3);
+        free($$);
     }
   ;
 
@@ -52,7 +63,9 @@ polygon:
     POLYGON '(' '(' coordinate_list_list ')' ')'
     {
         $$ = to_geojson_polygon($4);
+        printf("%s\n", $$);
         free($4);
+        free($$);
     }
   ;
 

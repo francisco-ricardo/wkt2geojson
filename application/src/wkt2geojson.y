@@ -175,18 +175,24 @@ int safe_asprintf(char **strp, const char *fmt, ...) {
 
 char* to_geojson_point(const char* coordinates) {
     char* result;
-    safe_asprintf(&result, "{\"type\": \"Point\", \"coordinates\": %s}", coordinates);
+    safe_asprintf(&result, 
+        "{\"type\": \"Feature\", \"geometry\": {\"type\": \"Point\", \"coordinates\": %s}}", 
+        coordinates);
     return result;
 }
 
 char* to_geojson_linestring(const char* coordinates) {
     char* result;
-    safe_asprintf(&result, "{\"type\": \"LineString\", \"coordinates\": [%s]}", coordinates);
+    safe_asprintf(&result, 
+        "{\"type\": \"Feature\", \"geometry\": {\"type\": \"LineString\", \"coordinates\": [%s]}}", 
+        coordinates);
     return result;
 }
 
 char* to_geojson_polygon(const char* coordinates_list) {
     char* result;
-    safe_asprintf(&result, "{\"type\": \"Polygon\", \"coordinates\": [[%s]]}", coordinates_list);
+    safe_asprintf(&result, 
+        "{\"type\": \"Feature\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[%s]]}}", 
+        coordinates_list);
     return result;
 }

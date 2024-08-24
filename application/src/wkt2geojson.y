@@ -20,6 +20,10 @@ char* to_geojson_polygon(const char* coordinates_list);
 }
 
 
+%code provides {
+  int feat_transpile(FILE *in_file, FILE *out_file);
+}
+
 %code {
     int count = 0;
 }

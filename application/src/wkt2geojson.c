@@ -1,82 +1,69 @@
-/**
- * Features Transpiler
- * 
- * The transpiler reads a `FEATURES` file and translates it into a 
- * `GeoJSON` file. 
- * 
- * The `FEATURES` is a file that is part of the ODB++ standard.
- * The file consists of the geometry data of the ODB++ layers.
- * The data can be used to analysis or dfm actions on Genesis software.
- * 
- * The `features` program is the entry point for the transpilation.
- * It deals with the command line arguments (input file, log file, 
- * and output file) and calls the `feat_transpile` function defined on 
- * the Features Parser (`features.y`).
- * The LR parser header (wkt2geojson.tab.h`) is a dependency for the transpiler.
- * 
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <getopt.h>
 
-#include "wkt2geojson.tab.h"
 
-  
-int main(int argc, char **argv) {
-
-    FILE *in_file;
-    FILE *out_file;
-    FILE *log_file;
-
-    int status = 1;
-
-    /** Args validation */
-    if (argc < 4) {
-        fprintf(stderr, "\nERROR|Usage: wkt2geojson INFILE LOGFILE OUTFILE\n");
-        exit(1);
-    }
-
-    /** Open log file */
-    log_file = fopen(argv[2], "a");
-    if (log_file == NULL) {
-        fprintf(stderr, "\nERROR|Cannot open log file %s\n", argv[2]);
-        exit(1);
-    }
-    //log_file = stderr;
-
-    /** Open input file */
-    in_file = fopen(argv[1], "r");
-    if (in_file == NULL) {
-        fprintf(log_file, "\nERROR|Cannot open input file %s", argv[1]);
-        fclose(log_file); 
-        exit(1);
-    }
-
-    /** Open output file */
-    out_file = fopen(argv[3], "w");
-    if (out_file == NULL) {
-        fprintf(log_file, "\nERROR|Cannot open output file %s", argv[3]);
-        fclose(log_file);
-        fclose(in_file);
-        exit(1);
-    }
-    
-   /** Run the parser */
-    if (!transpile(in_file, log_file, out_file)) {
-        status = 0;
-        fprintf(log_file, "\nINFO|File %s transpiled to %s", argv[1], argv[3]);        
-    }
-    else {
-        fprintf(log_file, "\nERROR|Cannot transpile file %s", argv[1]);
-        status = 1;
-    }
-
-    /** Cleanup */
-    fclose(log_file);
-    fclose(in_file);    
-    fclose(out_file);
- 
-    return status;
+void print_help(const char *program_name) {
+    printf("Usage: %s [options]\n", program_name);
+    printf("Options:\n");
+    printf("  -i <file>  Specify input file (default: stdin)\n");
+    printf("  -o <file>  Specify output file (default: stdout)\n");
+    printf("  -h         Display this help message\n");
 }
 
-// EOF
+
+int main(int argc, char *argv[]) {
+    int opt;
+    char *input_file = NULL;
+    char *output_file = NULL;
+
+    while ((opt = getopt(argc, argv, "i:o:h")) != -1) {
+        switch (opt) {
+            case 'i':
+                input_file = optarg;
+                break;
+            case 'o':
+                output_file = optarg;
+                break;
+            case 'h':
+                print_help(argv[0]);
+                return 0;
+            default:
+                print_help(argv[0]);
+                return 1;
+        }
+    }
+
+    FILE *input_fp = stdin;
+    FILE *output_fp = stdout;
+
+    if (input_file) {
+        input_fp = fopen(input_file, "r");
+        if (!input_fp) {
+            perror("Error opening input file");
+            return 1;
+        }
+    }
+
+    if (output_file) {
+        output_fp = fopen(output_file, "w");
+        if (!output_fp) {
+            perror("Error opening output file");
+            fclose(input_fp);
+            return 1;
+        }
+    }
+
+    // Aqui você pode processar o input_fp e gerar a saída no output_fp.
+    // Exemplo: copiar input para output
+    char buffer[1024];
+    size_t n;
+    while ((n = fread(buffer, 1, sizeof(buffer), input_fp)) > 0) {
+        fwrite(buffer, 1, n, output_fp);
+    }
+
+    if (input_fp != stdin) fclose(input_fp);
+    if (output_fp != stdout) fclose(output_fp);
+
+    return 0;
+}

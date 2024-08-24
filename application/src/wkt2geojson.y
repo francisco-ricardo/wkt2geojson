@@ -8,11 +8,6 @@
 void yyerror(const char *s);
 int yylex(void);
 
-int safe_asprintf(char **strp, const char *fmt, ...);
-char* to_geojson_point(const char* coordinates);
-char* to_geojson_linestring(const char* coordinates);
-char* to_geojson_polygon(const char* coordinates_list);
-
 %}
 
 %union {
@@ -22,11 +17,13 @@ char* to_geojson_polygon(const char* coordinates_list);
 
 
 %code provides {
-  int feat_transpile(FILE *in_file, FILE *out_file);
+  int transpile(FILE *in_file, FILE *out_file);
 }
 
 %code {
+    extern FILE *yyin;
     int count = 0;
+    static FILE *y_output_file = NULL;
 }
 
 %token <dval> NUMBER
@@ -55,9 +52,9 @@ point:
         $$ = to_geojson_point($3);
         count++;
         if (count > 1) {
-            printf(",%s\n", $$);    
+            fprintf(y_output_file, ",%s\n", $$);    
         } else {
-            printf("%s\n", $$);
+            fprintf(y_output_file, "%s\n", $$);
         }
         free($3);
         free($$);
@@ -70,9 +67,9 @@ linestring:
         $$ = to_geojson_linestring($3);        
         count++;
         if (count > 1) {
-            printf(",%s\n", $$);    
+            fprintf(y_output_file, ",%s\n", $$);    
         } else {
-            printf("%s\n", $$);
+            fprintf(y_output_file, "%s\n", $$);
         }
 
         free($3);
@@ -86,9 +83,9 @@ polygon:
         $$ = to_geojson_polygon($4);
         count++;
         if (count > 1) {
-            printf(",%s\n", $$);    
+            fprintf(y_output_file, ",%s\n", $$);    
         } else {
-            printf("%s\n", $$);
+            fprintf(y_output_file, "%s\n", $$);
         }
 
         free($4);
@@ -137,7 +134,7 @@ void yyerror(const char *s) {
     fprintf(stderr, "Error: %s\n", s);
 }
 
-int main() {
+/* int main() {
     int status = 1;    
 
     //printf("{\n");
@@ -155,7 +152,28 @@ int main() {
     //printf("\n}\n");
 
     return status;
-}
+} */
 
+
+int transpile(FILE *in_file, FILE *out_file) {
+
+    /** Uncomment the line below to enable the debugging */
+    //yydebug = 1;
+
+    int status = 1;
+    yyin = in_file;
+    y_output_file = out_file;
+
+    fprintf(y_output_file, "%s", header());
+
+    if (!yyparse()) {
+        status = 0;
+    }
+
+    fprintf(y_output_file, "%s", footer());
+
+    return status;
+
+}
 
 

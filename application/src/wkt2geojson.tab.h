@@ -66,7 +66,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 18 "wkt2geojson.y"
+#line 13 "wkt2geojson.y"
 
     double dval;
     char* sval;
@@ -86,9 +86,9 @@ extern YYSTYPE yylval;
 int yyparse (void);
 
 /* "%code provides" blocks.  */
-#line 24 "wkt2geojson.y"
+#line 19 "wkt2geojson.y"
 
-  int feat_transpile(FILE *in_file, FILE *out_file);
+  int transpile(FILE *in_file, FILE *out_file);
 
 #line 94 "wkt2geojson.tab.h"
 

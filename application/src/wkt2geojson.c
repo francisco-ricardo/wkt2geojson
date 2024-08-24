@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <getopt.h>
 
+#include "wkt2geojson.tab.h"
 
 void print_help(const char *program_name) {
     printf("Usage: %s [options]\n", program_name);
@@ -54,14 +55,14 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    // Aqui você pode processar o input_fp e gerar a saída no output_fp.
-    // Exemplo: copiar input para output
-    char buffer[1024];
-    size_t n;
-    while ((n = fread(buffer, 1, sizeof(buffer), input_fp)) > 0) {
-        fwrite(buffer, 1, n, output_fp);
+    /** Run the parser */
+    int status = 1;
+    if (!transpile(input_fp, output_fp)) {
+        status = 0;
     }
 
+
+    // Cleanup
     if (input_fp != stdin) fclose(input_fp);
     if (output_fp != stdout) fclose(output_fp);
 

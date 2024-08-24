@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"features": [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [30.000000, 10.000000]}}
+,{"type": "Feature", "geometry": {"type": "Point", "coordinates": [30.000000, 15.000000]}}
+,{"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[30.000000, 10.000000], [10.000000, 30.000000], [40.000000, 40.000000]]}}
+,{"type": "Feature", "geometry": {"type": "Polygon", "coordinates": [[[30.000000, 10.000000], [40.000000, 40.000000], [20.000000, 40.000000], [10.000000, 20.000000], [30.000000, 10.000000]]]}}
+
+]
+}

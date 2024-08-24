@@ -70,9 +70,10 @@
 #line 1 "wkt2geojson.y"
 
 #include <stdio.h>
-#include <stdlib.h>
+
 #include <string.h>
-#include <stdarg.h>
+
+#include "writer.h"
 
 void yyerror(const char *s);
 int yylex(void);
@@ -83,7 +84,7 @@ char* to_geojson_linestring(const char* coordinates);
 char* to_geojson_polygon(const char* coordinates_list);
 
 
-#line 87 "wkt2geojson.tab.c"
+#line 88 "wkt2geojson.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -136,11 +137,11 @@ typedef enum yysymbol_kind_t yysymbol_kind_t;
 
 
 /* Unqualified %code blocks.  */
-#line 23 "wkt2geojson.y"
+#line 28 "wkt2geojson.y"
 
     int count = 0;
 
-#line 144 "wkt2geojson.tab.c"
+#line 145 "wkt2geojson.tab.c"
 
 #ifdef short
 # undef short
@@ -522,8 +523,8 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    35,    35,    39,    40,    41,    42,    43,    44,    48,
-      63,    79,    95,   102,   107,   116,   121
+       0,    40,    40,    44,    45,    46,    47,    48,    49,    53,
+      68,    84,   100,   107,   112,   121,   126
 };
 #endif
 
@@ -1097,7 +1098,7 @@ yyreduce:
   switch (yyn)
     {
   case 9: /* point: POINT '(' coordinate ')'  */
-#line 49 "wkt2geojson.y"
+#line 54 "wkt2geojson.y"
     {
         (yyval.sval) = to_geojson_point((yyvsp[-1].sval));
         count++;
@@ -1109,11 +1110,11 @@ yyreduce:
         free((yyvsp[-1].sval));
         free((yyval.sval));
     }
-#line 1113 "wkt2geojson.tab.c"
+#line 1114 "wkt2geojson.tab.c"
     break;
 
   case 10: /* linestring: LINESTRING '(' coordinate_list ')'  */
-#line 64 "wkt2geojson.y"
+#line 69 "wkt2geojson.y"
     {
         (yyval.sval) = to_geojson_linestring((yyvsp[-1].sval));        
         count++;
@@ -1126,11 +1127,11 @@ yyreduce:
         free((yyvsp[-1].sval));
         free((yyval.sval));
     }
-#line 1130 "wkt2geojson.tab.c"
+#line 1131 "wkt2geojson.tab.c"
     break;
 
   case 11: /* polygon: POLYGON '(' '(' coordinate_list_list ')' ')'  */
-#line 80 "wkt2geojson.y"
+#line 85 "wkt2geojson.y"
     {
         (yyval.sval) = to_geojson_polygon((yyvsp[-2].sval));
         count++;
@@ -1143,57 +1144,57 @@ yyreduce:
         free((yyvsp[-2].sval));
         free((yyval.sval));
     }
-#line 1147 "wkt2geojson.tab.c"
+#line 1148 "wkt2geojson.tab.c"
     break;
 
   case 12: /* coordinate: NUMBER NUMBER  */
-#line 96 "wkt2geojson.y"
+#line 101 "wkt2geojson.y"
     {
         safe_asprintf(&(yyval.sval), "[%f, %f]", (yyvsp[-1].dval), (yyvsp[0].dval));
     }
-#line 1155 "wkt2geojson.tab.c"
+#line 1156 "wkt2geojson.tab.c"
     break;
 
   case 13: /* coordinate_list: coordinate  */
-#line 103 "wkt2geojson.y"
+#line 108 "wkt2geojson.y"
     {
         (yyval.sval) = strdup((yyvsp[0].sval));
         free((yyvsp[0].sval));
     }
-#line 1164 "wkt2geojson.tab.c"
+#line 1165 "wkt2geojson.tab.c"
     break;
 
   case 14: /* coordinate_list: coordinate_list ',' coordinate  */
-#line 108 "wkt2geojson.y"
+#line 113 "wkt2geojson.y"
     {
         safe_asprintf(&(yyval.sval), "%s, %s", (yyvsp[-2].sval), (yyvsp[0].sval));
         free((yyvsp[-2].sval));
         free((yyvsp[0].sval));
     }
-#line 1174 "wkt2geojson.tab.c"
+#line 1175 "wkt2geojson.tab.c"
     break;
 
   case 15: /* coordinate_list_list: coordinate_list  */
-#line 117 "wkt2geojson.y"
+#line 122 "wkt2geojson.y"
     {
         (yyval.sval) = strdup((yyvsp[0].sval));
         free((yyvsp[0].sval));
     }
-#line 1183 "wkt2geojson.tab.c"
+#line 1184 "wkt2geojson.tab.c"
     break;
 
   case 16: /* coordinate_list_list: coordinate_list_list ',' coordinate_list  */
-#line 122 "wkt2geojson.y"
+#line 127 "wkt2geojson.y"
     {
         safe_asprintf(&(yyval.sval), "%s, %s", (yyvsp[-2].sval), (yyvsp[0].sval));
         free((yyvsp[-2].sval));
         free((yyvsp[0].sval));
     }
-#line 1193 "wkt2geojson.tab.c"
+#line 1194 "wkt2geojson.tab.c"
     break;
 
 
-#line 1197 "wkt2geojson.tab.c"
+#line 1198 "wkt2geojson.tab.c"
 
       default: break;
     }
@@ -1386,7 +1387,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 129 "wkt2geojson.y"
+#line 134 "wkt2geojson.y"
 
 
 void yyerror(const char *s) {
@@ -1396,64 +1397,22 @@ void yyerror(const char *s) {
 int main() {
     int status = 1;    
 
-    printf("{\n");
-    printf("\"type\": \"FeatureCollection\",");
-    printf("\n\"features\": [");
+    //printf("{\n");
+    //printf("\"type\": \"FeatureCollection\",");
+    //printf("\n\"features\": [");
+    printf("%s", header());
 
     if (!yyparse()) {
         status = 0;
     }
 
-    printf("\n]");
-    printf("\n}\n");
+    printf("%s", footer());
+    
+    //printf("\n]");
+    //printf("\n}\n");
 
     return status;
 }
 
-int safe_asprintf(char **strp, const char *fmt, ...) {
-    va_list ap;
-    va_start(ap, fmt);
 
-    int len = vsnprintf(NULL, 0, fmt, ap);
-    if (len < 0) {
-        va_end(ap);
-        return -1;
-    }
 
-    *strp = malloc(len + 1);
-    if (!*strp) {
-        va_end(ap);
-        return -1;
-    }
-
-    va_end(ap);
-    va_start(ap, fmt);
-    vsnprintf(*strp, len + 1, fmt, ap);
-    va_end(ap);
-
-    return len;
-}
-
-char* to_geojson_point(const char* coordinates) {
-    char* result;
-    safe_asprintf(&result, 
-        "{\"type\": \"Feature\", \"geometry\": {\"type\": \"Point\", \"coordinates\": %s}}", 
-        coordinates);
-    return result;
-}
-
-char* to_geojson_linestring(const char* coordinates) {
-    char* result;
-    safe_asprintf(&result, 
-        "{\"type\": \"Feature\", \"geometry\": {\"type\": \"LineString\", \"coordinates\": [%s]}}", 
-        coordinates);
-    return result;
-}
-
-char* to_geojson_polygon(const char* coordinates_list) {
-    char* result;
-    safe_asprintf(&result, 
-        "{\"type\": \"Feature\", \"geometry\": {\"type\": \"Polygon\", \"coordinates\": [[%s]]}}", 
-        coordinates_list);
-    return result;
-}

@@ -96,7 +96,8 @@ test2:
 	flex wkt2geojson.l
 	#bison -d -Wcounterexamples wkt2geojson.y
 	bison -d wkt2geojson.y
-	gcc -o wkt_parser wkt2geojson.tab.c lex.yy.c -lfl
+	gcc -o wkt_parser wkt2geojson.tab.c lex.yy.c writer.c -lfl
+	./wkt_parser < ../samples/wkt/ex4 > ../../tmp/test.json
 
 
 # target: help - Mostra os targets que sao executaveis

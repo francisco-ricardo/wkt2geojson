@@ -61,10 +61,9 @@ int main(int argc, char *argv[]) {
         status = 0;
     }
 
-
     // Cleanup
     if (input_fp != stdin) fclose(input_fp);
     if (output_fp != stdout) fclose(output_fp);
 
-    return 0;
+    return status;
 }

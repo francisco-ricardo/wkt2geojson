@@ -2,7 +2,7 @@
 #
 # make help
 #
-.PHONY: all build compile clean test test help
+.PHONY: all build compile clean test2 test help
 
 CONTAINER ?= wkt2geojson
 
@@ -44,6 +44,8 @@ clean:
 	rm -f ./wkt2geojson.tab.h
 	rm -f ./wkt2geojson.tab.c
 	rm -f $(APP_ROOT_DIR)/application/bin/wkt2geojson
+	rm -f ./test
+	rm -f ./test.json
 
 
 # target: compile - Compile the `wkt2geojson` transpiler
@@ -69,9 +71,9 @@ wkt2geojson.tab.h:
 
 
 # target: test - Compile the `test` program and run into a Valgrind sandbox for testing
-test: clean lex.yy.c wkt2geojson.tab.h
-	rm -f $(APP_ROOT_DIR)/tmp/test.log
-	rm -f $(APP_ROOT_DIR)/tmp/test.json
+test2: clean lex.yy.c wkt2geojson.tab.h
+	rm -f test
+	rm -f test.json
 
 	gcc $(GCC_FLAGS) \
 		-o $(APP_ROOT_DIR)/application/bin/test \
@@ -92,13 +94,23 @@ test: clean lex.yy.c wkt2geojson.tab.h
 		$(APP_ROOT_DIR)/tmp/test.log \
 		$(APP_ROOT_DIR)/tmp/test.json
 
-test2:
-	flex wkt2geojson.l
-	#bison -d -Wcounterexamples wkt2geojson.y
-	bison -d wkt2geojson.y
-	gcc -o wkt2geojson wkt2geojson.c wkt2geojson.tab.c lex.yy.c writer.c -lfl
-	#gcc -o wkt2geojson wkt2geojson.c lex.yy.c writer.c -lfl
-	./wkt2geojson < ../samples/wkt/ex4 > ../../tmp/test.json
+# target: test - Compile the `test` program and run into a Valgrind sandbox for testing
+test: clean lex.yy.c wkt2geojson.tab.h
+
+	gcc $(GCC_FLAGS) \
+		-o test \
+		wkt2geojson.c \
+		wkt2geojson.tab.c \
+		lex.yy.c \
+		writer.c \
+		-lfl
+
+	valgrind --trace-children=yes \
+		--track-fds=yes \
+		--track-origins=yes \
+		--leak-check=full \
+		--show-leak-kinds=all \
+		./test < ../samples/wkt/ex4 > test.json
 
 
 # target: help - Mostra os targets que sao executaveis

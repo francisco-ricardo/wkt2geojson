@@ -462,7 +462,8 @@ char *yytext;
 #line 2 "wkt2geojson.l"
 #include "wkt2geojson.tab.h"
 #line 465 "lex.yy.c"
-#line 466 "lex.yy.c"
+#define YY_NO_INPUT 1
+#line 467 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -522,8 +523,6 @@ extern int yywrap ( void );
 #endif
 
 #ifndef YY_NO_UNPUT
-    
-    static void yyunput ( int c, char *buf_ptr  );
     
 #endif
 
@@ -679,9 +678,9 @@ YY_DECL
 		}
 
 	{
-#line 5 "wkt2geojson.l"
+#line 7 "wkt2geojson.l"
 
-#line 685 "lex.yy.c"
+#line 684 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -740,56 +739,56 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 6 "wkt2geojson.l"
+#line 8 "wkt2geojson.l"
 { return POINT; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 7 "wkt2geojson.l"
+#line 9 "wkt2geojson.l"
 { return LINESTRING; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 8 "wkt2geojson.l"
+#line 10 "wkt2geojson.l"
 { return POLYGON; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 9 "wkt2geojson.l"
+#line 11 "wkt2geojson.l"
 { yylval.dval = atof(yytext); return NUMBER; }
 	YY_BREAK
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 10 "wkt2geojson.l"
-{ /* ignorar espaços em branco e quebras de linha */ }
+#line 12 "wkt2geojson.l"
+{ /* ignore whitespaces and linebreaks */ }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 11 "wkt2geojson.l"
+#line 13 "wkt2geojson.l"
 { return ','; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 12 "wkt2geojson.l"
+#line 14 "wkt2geojson.l"
 { return '('; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 13 "wkt2geojson.l"
+#line 15 "wkt2geojson.l"
 { return ')'; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 14 "wkt2geojson.l"
+#line 16 "wkt2geojson.l"
 { return yytext[0]; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 15 "wkt2geojson.l"
+#line 17 "wkt2geojson.l"
 ECHO;
 	YY_BREAK
-#line 793 "lex.yy.c"
+#line 792 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1124,43 +1123,6 @@ static int yy_get_next_buffer (void)
 }
 
 #ifndef YY_NO_UNPUT
-
-    static void yyunput (int c, char * yy_bp )
-{
-	char *yy_cp;
-    
-    yy_cp = (yy_c_buf_p);
-
-	/* undo effects of setting up yytext */
-	*yy_cp = (yy_hold_char);
-
-	if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
-		{ /* need to shift things up to make room */
-		/* +2 for EOB chars. */
-		int number_to_move = (yy_n_chars) + 2;
-		char *dest = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[
-					YY_CURRENT_BUFFER_LVALUE->yy_buf_size + 2];
-		char *source =
-				&YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[number_to_move];
-
-		while ( source > YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
-			*--dest = *--source;
-
-		yy_cp += (int) (dest - source);
-		yy_bp += (int) (dest - source);
-		YY_CURRENT_BUFFER_LVALUE->yy_n_chars =
-			(yy_n_chars) = (int) YY_CURRENT_BUFFER_LVALUE->yy_buf_size;
-
-		if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
-			YY_FATAL_ERROR( "flex scanner push-back overflow" );
-		}
-
-	*--yy_cp = (char) c;
-
-	(yytext_ptr) = yy_bp;
-	(yy_hold_char) = *yy_cp;
-	(yy_c_buf_p) = yy_cp;
-}
 
 #endif
 
@@ -1794,10 +1756,10 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 15 "wkt2geojson.l"
+#line 17 "wkt2geojson.l"
 
 
-int yywrap() {
+int yywrap(void) {
     return 1;
 }
 

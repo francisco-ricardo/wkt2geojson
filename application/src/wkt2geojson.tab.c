@@ -70,10 +70,10 @@
 #line 1 "wkt2geojson.y"
 
 #include <stdio.h>
-
 #include <string.h>
 
 #include "writer.h"
+
 
 void yyerror(const char *s);
 int yylex(void);
@@ -135,7 +135,7 @@ typedef enum yysymbol_kind_t yysymbol_kind_t;
 #line 23 "wkt2geojson.y"
 
     extern FILE *yyin;
-    int count = 0;
+    static int count = 0;
     static FILE *y_output_file = NULL;
 
 #line 142 "wkt2geojson.tab.c"
@@ -1147,7 +1147,7 @@ yyreduce:
   case 12: /* coordinate: NUMBER NUMBER  */
 #line 98 "wkt2geojson.y"
     {
-        safe_asprintf(&(yyval.sval), "[%f, %f]", (yyvsp[-1].dval), (yyvsp[0].dval));
+        write_string(&(yyval.sval), "[%f, %f]", (yyvsp[-1].dval), (yyvsp[0].dval));
     }
 #line 1153 "wkt2geojson.tab.c"
     break;
@@ -1164,7 +1164,7 @@ yyreduce:
   case 14: /* coordinate_list: coordinate_list ',' coordinate  */
 #line 110 "wkt2geojson.y"
     {
-        safe_asprintf(&(yyval.sval), "%s, %s", (yyvsp[-2].sval), (yyvsp[0].sval));
+        write_string(&(yyval.sval), "%s, %s", (yyvsp[-2].sval), (yyvsp[0].sval));
         free((yyvsp[-2].sval));
         free((yyvsp[0].sval));
     }
@@ -1183,7 +1183,7 @@ yyreduce:
   case 16: /* coordinate_list_list: coordinate_list_list ',' coordinate_list  */
 #line 124 "wkt2geojson.y"
     {
-        safe_asprintf(&(yyval.sval), "%s, %s", (yyvsp[-2].sval), (yyvsp[0].sval));
+        write_string(&(yyval.sval), "%s, %s", (yyvsp[-2].sval), (yyvsp[0].sval));
         free((yyvsp[-2].sval));
         free((yyvsp[0].sval));
     }
@@ -1387,29 +1387,10 @@ yyreturnlab:
 #line 131 "wkt2geojson.y"
 
 
+
 void yyerror(const char *s) {
     fprintf(stderr, "Error: %s\n", s);
 }
-
-/* int main() {
-    int status = 1;    
-
-    //printf("{\n");
-    //printf("\"type\": \"FeatureCollection\",");
-    //printf("\n\"features\": [");
-    printf("%s", header());
-
-    if (!yyparse()) {
-        status = 0;
-    }
-
-    printf("%s", footer());
-    
-    //printf("\n]");
-    //printf("\n}\n");
-
-    return status;
-} */
 
 
 int transpile(FILE *in_file, FILE *out_file) {

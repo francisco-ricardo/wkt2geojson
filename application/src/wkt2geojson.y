@@ -1,9 +1,9 @@
 %{
 #include <stdio.h>
-
 #include <string.h>
 
 #include "writer.h"
+
 
 void yyerror(const char *s);
 int yylex(void);
@@ -22,7 +22,7 @@ int yylex(void);
 
 %code {
     extern FILE *yyin;
-    int count = 0;
+    static int count = 0;
     static FILE *y_output_file = NULL;
 }
 
@@ -96,7 +96,7 @@ polygon:
 coordinate:
     NUMBER NUMBER  
     {
-        safe_asprintf(&$$, "[%f, %f]", $1, $2);
+        write_string(&$$, "[%f, %f]", $1, $2);
     }
   ;
 
@@ -108,7 +108,7 @@ coordinate_list:
     }
   | coordinate_list ',' coordinate  
     {
-        safe_asprintf(&$$, "%s, %s", $1, $3);
+        write_string(&$$, "%s, %s", $1, $3);
         free($1);
         free($3);
     }
@@ -122,7 +122,7 @@ coordinate_list_list:
     }
   | coordinate_list_list ',' coordinate_list  
     {
-        safe_asprintf(&$$, "%s, %s", $1, $3);
+        write_string(&$$, "%s, %s", $1, $3);
         free($1);
         free($3);
     }
@@ -130,29 +130,10 @@ coordinate_list_list:
 
 %%
 
+
 void yyerror(const char *s) {
     fprintf(stderr, "Error: %s\n", s);
 }
-
-/* int main() {
-    int status = 1;    
-
-    //printf("{\n");
-    //printf("\"type\": \"FeatureCollection\",");
-    //printf("\n\"features\": [");
-    printf("%s", header());
-
-    if (!yyparse()) {
-        status = 0;
-    }
-
-    printf("%s", footer());
-    
-    //printf("\n]");
-    //printf("\n}\n");
-
-    return status;
-} */
 
 
 int transpile(FILE *in_file, FILE *out_file) {

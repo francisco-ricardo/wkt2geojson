@@ -4,7 +4,7 @@
 #ifndef INCLUDED_WRITER_H
 #define INCLUDED_WRITER_H
 
-int safe_asprintf(char **strp, const char *fmt, ...);
+int write_string(char **strp, const char *fmt, ...);
 
 char* header(void);
 

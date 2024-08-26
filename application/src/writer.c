@@ -5,15 +5,13 @@
 
 char* header(void) {
     char* result;
-    write_string(&result,
-         "{\n\"type\": \"FeatureCollection\",\n\"features\": [");
+    write_string(&result, "%s",
+        "{\n\"type\": \"FeatureCollection\",\n\"features\": [");
     return result;
 }
 
 char* footer(void) {
     char* result;
-    //write_string(&result,
-         //"\n]\n}\n");
     write_string(&result, "%s", "\n]\n}\n");
     return result;
 }

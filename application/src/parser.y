@@ -1,20 +1,16 @@
 %{
 #include <stdio.h>
 #include <string.h>
-
 #include "writer.h"
-
 
 void yyerror(const char *s);
 int yylex(void);
-
 %}
 
 %union {
     double dval;
     char* sval;
 }
-
 
 %code provides {
   int transpile(FILE *in_file, FILE *out_file);
@@ -25,6 +21,8 @@ int yylex(void);
     static int count = 0;
     static FILE *y_output_file = NULL;
 }
+
+%left ','
 
 %token <dval> NUMBER
 %token POINT LINESTRING POLYGON
@@ -145,16 +143,18 @@ int transpile(FILE *in_file, FILE *out_file) {
     yyin = in_file;
     y_output_file = out_file;
 
-    fprintf(y_output_file, "%s", header());
+    char* header_str = header();
+    fprintf(y_output_file, "%s", header_str);
+    free(header_str);
 
     if (!yyparse()) {
         status = 0;
     }
 
-    fprintf(y_output_file, "%s", footer());
+    char* footer_str = footer();
+    fprintf(y_output_file, "%s", footer_str);
+    free(footer_str);
 
     return status;
 
 }
-
-

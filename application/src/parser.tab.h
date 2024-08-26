@@ -35,8 +35,8 @@
    especially those whose name start with YY_ or yy_.  They are
    private implementation details that can be changed or removed.  */
 
-#ifndef YY_YY_WKT2GEOJSON_TAB_H_INCLUDED
-# define YY_YY_WKT2GEOJSON_TAB_H_INCLUDED
+#ifndef YY_YY_PARSER_TAB_H_INCLUDED
+# define YY_YY_PARSER_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 1
@@ -66,12 +66,12 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 13 "wkt2geojson.y"
+#line 10 "parser.y"
 
     double dval;
     char* sval;
 
-#line 75 "wkt2geojson.tab.h"
+#line 75 "parser.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -86,10 +86,10 @@ extern YYSTYPE yylval;
 int yyparse (void);
 
 /* "%code provides" blocks.  */
-#line 19 "wkt2geojson.y"
+#line 15 "parser.y"
 
   int transpile(FILE *in_file, FILE *out_file);
 
-#line 94 "wkt2geojson.tab.h"
+#line 94 "parser.tab.h"
 
-#endif /* !YY_YY_WKT2GEOJSON_TAB_H_INCLUDED  */
+#endif /* !YY_YY_PARSER_TAB_H_INCLUDED  */

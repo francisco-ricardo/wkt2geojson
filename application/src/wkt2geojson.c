@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <getopt.h>
 
-#include "wkt2geojson.tab.h"
+#include "parser.tab.h"
 
 void print_help(const char *program_name) {
     printf("Usage: %s [options]\n", program_name);

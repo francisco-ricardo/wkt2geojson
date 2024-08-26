@@ -1,5 +1,5 @@
 %{
-#include "wkt2geojson.tab.h"
+#include "parser.tab.h"
 %}
 
 %option noinput nounput

@@ -67,19 +67,16 @@
 
 
 /* First part of user prologue.  */
-#line 1 "wkt2geojson.y"
+#line 1 "parser.y"
 
 #include <stdio.h>
 #include <string.h>
-
 #include "writer.h"
-
 
 void yyerror(const char *s);
 int yylex(void);
 
-
-#line 83 "wkt2geojson.tab.c"
+#line 80 "parser.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -102,7 +99,7 @@ int yylex(void);
 #  endif
 # endif
 
-#include "wkt2geojson.tab.h"
+#include "parser.tab.h"
 /* Symbol kind.  */
 enum yysymbol_kind_t
 {
@@ -110,13 +107,13 @@ enum yysymbol_kind_t
   YYSYMBOL_YYEOF = 0,                      /* "end of file"  */
   YYSYMBOL_YYerror = 1,                    /* error  */
   YYSYMBOL_YYUNDEF = 2,                    /* "invalid token"  */
-  YYSYMBOL_NUMBER = 3,                     /* NUMBER  */
-  YYSYMBOL_POINT = 4,                      /* POINT  */
-  YYSYMBOL_LINESTRING = 5,                 /* LINESTRING  */
-  YYSYMBOL_POLYGON = 6,                    /* POLYGON  */
-  YYSYMBOL_7_ = 7,                         /* '('  */
-  YYSYMBOL_8_ = 8,                         /* ')'  */
-  YYSYMBOL_9_ = 9,                         /* ','  */
+  YYSYMBOL_3_ = 3,                         /* ','  */
+  YYSYMBOL_NUMBER = 4,                     /* NUMBER  */
+  YYSYMBOL_POINT = 5,                      /* POINT  */
+  YYSYMBOL_LINESTRING = 6,                 /* LINESTRING  */
+  YYSYMBOL_POLYGON = 7,                    /* POLYGON  */
+  YYSYMBOL_8_ = 8,                         /* '('  */
+  YYSYMBOL_9_ = 9,                         /* ')'  */
   YYSYMBOL_YYACCEPT = 10,                  /* $accept  */
   YYSYMBOL_geometry = 11,                  /* geometry  */
   YYSYMBOL_geometry_list = 12,             /* geometry_list  */
@@ -132,13 +129,13 @@ typedef enum yysymbol_kind_t yysymbol_kind_t;
 
 
 /* Unqualified %code blocks.  */
-#line 23 "wkt2geojson.y"
+#line 19 "parser.y"
 
     extern FILE *yyin;
     static int count = 0;
     static FILE *y_output_file = NULL;
 
-#line 142 "wkt2geojson.tab.c"
+#line 139 "parser.tab.c"
 
 #ifdef short
 # undef short
@@ -491,7 +488,7 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       7,     8,     2,     2,     9,     2,     2,     2,     2,     2,
+       8,     9,     2,     2,     3,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -512,16 +509,16 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6
+       2,     2,     2,     2,     2,     2,     1,     2,     4,     5,
+       6,     7
 };
 
 #if YYDEBUG
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    37,    37,    41,    42,    43,    44,    45,    46,    50,
-      65,    81,    97,   104,   109,   118,   123
+       0,    35,    35,    39,    40,    41,    42,    43,    44,    48,
+      63,    79,    95,   102,   107,   116,   121
 };
 #endif
 
@@ -537,8 +534,8 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "\"end of file\"", "error", "\"invalid token\"", "NUMBER", "POINT",
-  "LINESTRING", "POLYGON", "'('", "')'", "','", "$accept", "geometry",
+  "\"end of file\"", "error", "\"invalid token\"", "','", "NUMBER",
+  "POINT", "LINESTRING", "POLYGON", "'('", "')'", "$accept", "geometry",
   "geometry_list", "point", "linestring", "polygon", "coordinate",
   "coordinate_list", "coordinate_list_list", YY_NULLPTR
 };
@@ -564,10 +561,10 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -2,     2,     4,     5,    13,    -2,   -20,   -20,   -20,    11,
-      11,     9,   -20,   -20,   -20,   -20,    14,    10,   -20,    -3,
-      11,   -20,   -20,   -20,    11,    12,    -1,   -20,    15,    11,
-     -20,    12
+       0,    -5,     3,     4,    13,     0,   -20,   -20,   -20,    11,
+      11,     8,   -20,   -20,   -20,   -20,    14,    10,   -20,    -1,
+      11,   -20,   -20,    11,   -20,    17,     1,   -20,    11,    12,
+     -20,   -20
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -577,14 +574,14 @@ static const yytype_int8 yydefact[] =
 {
        0,     0,     0,     0,     0,     2,     3,     4,     5,     0,
        0,     0,     1,     6,     7,     8,     0,     0,    13,     0,
-       0,    12,     9,    10,     0,    15,     0,    14,     0,     0,
-      11,    16
+       0,    12,     9,     0,    10,    15,     0,    14,     0,     0,
+      16,    11
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -20,   -20,   -20,    17,    19,    20,    -9,   -19,   -20
+     -20,   -20,   -20,    18,    19,    20,    -9,   -19,   -20
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -598,26 +595,26 @@ static const yytype_int8 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-      17,    25,     1,     2,     3,    23,    24,    28,    29,     9,
-      31,    10,    11,    12,    16,    27,    20,    21,    22,     0,
-       0,    24,    13,    30,    14,    15
+      17,    25,    23,     9,    28,     1,     2,     3,    24,    30,
+      29,    10,    11,    12,    27,    16,    20,     0,    21,    22,
+      23,    31,     0,    13,    14,    15
 };
 
 static const yytype_int8 yycheck[] =
 {
-       9,    20,     4,     5,     6,     8,     9,     8,     9,     7,
-      29,     7,     7,     0,     3,    24,     7,     3,     8,    -1,
-      -1,     9,     5,     8,     5,     5
+       9,    20,     3,     8,     3,     5,     6,     7,     9,    28,
+       9,     8,     8,     0,    23,     4,     8,    -1,     4,     9,
+       3,     9,    -1,     5,     5,     5
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     4,     5,     6,    11,    12,    13,    14,    15,     7,
-       7,     7,     0,    13,    14,    15,     3,    16,    16,    17,
-       7,     3,     8,     8,     9,    17,    18,    16,     8,     9,
-       8,    17
+       0,     5,     6,     7,    11,    12,    13,    14,    15,     8,
+       8,     8,     0,    13,    14,    15,     4,    16,    16,    17,
+       8,     4,     9,     3,     9,    17,    18,    16,     3,     9,
+      17,     9
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
@@ -1095,7 +1092,7 @@ yyreduce:
   switch (yyn)
     {
   case 9: /* point: POINT '(' coordinate ')'  */
-#line 51 "wkt2geojson.y"
+#line 49 "parser.y"
     {
         (yyval.sval) = to_geojson_point((yyvsp[-1].sval));
         count++;
@@ -1107,11 +1104,11 @@ yyreduce:
         free((yyvsp[-1].sval));
         free((yyval.sval));
     }
-#line 1111 "wkt2geojson.tab.c"
+#line 1108 "parser.tab.c"
     break;
 
   case 10: /* linestring: LINESTRING '(' coordinate_list ')'  */
-#line 66 "wkt2geojson.y"
+#line 64 "parser.y"
     {
         (yyval.sval) = to_geojson_linestring((yyvsp[-1].sval));        
         count++;
@@ -1124,11 +1121,11 @@ yyreduce:
         free((yyvsp[-1].sval));
         free((yyval.sval));
     }
-#line 1128 "wkt2geojson.tab.c"
+#line 1125 "parser.tab.c"
     break;
 
   case 11: /* polygon: POLYGON '(' '(' coordinate_list_list ')' ')'  */
-#line 82 "wkt2geojson.y"
+#line 80 "parser.y"
     {
         (yyval.sval) = to_geojson_polygon((yyvsp[-2].sval));
         count++;
@@ -1141,57 +1138,57 @@ yyreduce:
         free((yyvsp[-2].sval));
         free((yyval.sval));
     }
-#line 1145 "wkt2geojson.tab.c"
+#line 1142 "parser.tab.c"
     break;
 
   case 12: /* coordinate: NUMBER NUMBER  */
-#line 98 "wkt2geojson.y"
+#line 96 "parser.y"
     {
         write_string(&(yyval.sval), "[%f, %f]", (yyvsp[-1].dval), (yyvsp[0].dval));
     }
-#line 1153 "wkt2geojson.tab.c"
+#line 1150 "parser.tab.c"
     break;
 
   case 13: /* coordinate_list: coordinate  */
-#line 105 "wkt2geojson.y"
+#line 103 "parser.y"
     {
         (yyval.sval) = strdup((yyvsp[0].sval));
         free((yyvsp[0].sval));
     }
-#line 1162 "wkt2geojson.tab.c"
+#line 1159 "parser.tab.c"
     break;
 
   case 14: /* coordinate_list: coordinate_list ',' coordinate  */
-#line 110 "wkt2geojson.y"
+#line 108 "parser.y"
     {
         write_string(&(yyval.sval), "%s, %s", (yyvsp[-2].sval), (yyvsp[0].sval));
         free((yyvsp[-2].sval));
         free((yyvsp[0].sval));
     }
-#line 1172 "wkt2geojson.tab.c"
+#line 1169 "parser.tab.c"
     break;
 
   case 15: /* coordinate_list_list: coordinate_list  */
-#line 119 "wkt2geojson.y"
+#line 117 "parser.y"
     {
         (yyval.sval) = strdup((yyvsp[0].sval));
         free((yyvsp[0].sval));
     }
-#line 1181 "wkt2geojson.tab.c"
+#line 1178 "parser.tab.c"
     break;
 
   case 16: /* coordinate_list_list: coordinate_list_list ',' coordinate_list  */
-#line 124 "wkt2geojson.y"
+#line 122 "parser.y"
     {
         write_string(&(yyval.sval), "%s, %s", (yyvsp[-2].sval), (yyvsp[0].sval));
         free((yyvsp[-2].sval));
         free((yyvsp[0].sval));
     }
-#line 1191 "wkt2geojson.tab.c"
+#line 1188 "parser.tab.c"
     break;
 
 
-#line 1195 "wkt2geojson.tab.c"
+#line 1192 "parser.tab.c"
 
       default: break;
     }
@@ -1384,7 +1381,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 131 "wkt2geojson.y"
+#line 129 "parser.y"
 
 
 
@@ -1402,16 +1399,18 @@ int transpile(FILE *in_file, FILE *out_file) {
     yyin = in_file;
     y_output_file = out_file;
 
-    fprintf(y_output_file, "%s", header());
+    char* header_str = header();
+    fprintf(y_output_file, "%s", header_str);
+    free(header_str);
 
     if (!yyparse()) {
         status = 0;
     }
 
-    fprintf(y_output_file, "%s", footer());
+    char* footer_str = footer();
+    fprintf(y_output_file, "%s", footer_str);
+    free(footer_str);
 
     return status;
 
 }
-
-

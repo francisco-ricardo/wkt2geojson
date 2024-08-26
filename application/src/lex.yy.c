@@ -458,9 +458,9 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "wkt2geojson.l"
-#line 2 "wkt2geojson.l"
-#include "wkt2geojson.tab.h"
+#line 1 "scanner.l"
+#line 2 "scanner.l"
+#include "parser.tab.h"
 #line 465 "lex.yy.c"
 #define YY_NO_INPUT 1
 #line 467 "lex.yy.c"
@@ -678,7 +678,7 @@ YY_DECL
 		}
 
 	{
-#line 7 "wkt2geojson.l"
+#line 7 "scanner.l"
 
 #line 684 "lex.yy.c"
 
@@ -739,53 +739,53 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 8 "wkt2geojson.l"
+#line 8 "scanner.l"
 { return POINT; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 9 "wkt2geojson.l"
+#line 9 "scanner.l"
 { return LINESTRING; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 10 "wkt2geojson.l"
+#line 10 "scanner.l"
 { return POLYGON; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 11 "wkt2geojson.l"
+#line 11 "scanner.l"
 { yylval.dval = atof(yytext); return NUMBER; }
 	YY_BREAK
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 12 "wkt2geojson.l"
+#line 12 "scanner.l"
 { /* ignore whitespaces and linebreaks */ }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 13 "wkt2geojson.l"
+#line 13 "scanner.l"
 { return ','; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 14 "wkt2geojson.l"
+#line 14 "scanner.l"
 { return '('; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 15 "wkt2geojson.l"
+#line 15 "scanner.l"
 { return ')'; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 16 "wkt2geojson.l"
+#line 16 "scanner.l"
 { return yytext[0]; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 17 "wkt2geojson.l"
+#line 17 "scanner.l"
 ECHO;
 	YY_BREAK
 #line 792 "lex.yy.c"
@@ -1756,7 +1756,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 17 "wkt2geojson.l"
+#line 17 "scanner.l"
 
 
 int yywrap(void) {

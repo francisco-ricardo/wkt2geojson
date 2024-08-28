@@ -27,7 +27,7 @@ int yylex(void);
 %token <dval> NUMBER
 %token POINT LINESTRING POLYGON
 
-%type <sval> coordinate coordinate_list coordinate_list_list point linestring polygon geometry_list
+%type <sval> coordinate coordinate_list point linestring polygon geometry_list polygon_coordinates
 
 %%
 
@@ -76,9 +76,9 @@ linestring:
   ;
 
 polygon:
-    POLYGON '(' '(' coordinate_list_list ')' ')'
+    POLYGON '(' polygon_coordinates ')'  
     {
-        $$ = to_geojson_polygon($4);
+        $$ = to_geojson_polygon($3);
         count++;
         if (count > 1) {
             fprintf(y_output_file, ",%s\n", $$);    
@@ -86,8 +86,22 @@ polygon:
             fprintf(y_output_file, "%s\n", $$);
         }
 
-        free($4);
+        free($3);
         free($$);
+    }
+  ;
+
+polygon_coordinates:
+    '(' coordinate_list ')'  
+    {
+        $$ = strdup($2);
+        free($2);
+    }
+  | polygon_coordinates ',' '(' coordinate_list ')'  
+    {
+        write_string(&$$, "%s, %s", $1, $4);
+        free($1);
+        free($4);
     }
   ;
 
@@ -112,30 +126,13 @@ coordinate_list:
     }
   ;
 
-coordinate_list_list:
-    coordinate_list  
-    {
-        $$ = strdup($1);
-        free($1);
-    }
-  | coordinate_list_list ',' coordinate_list  
-    {
-        write_string(&$$, "%s, %s", $1, $3);
-        free($1);
-        free($3);
-    }
-  ;
-
 %%
-
 
 void yyerror(const char *s) {
     fprintf(stderr, "Error: %s\n", s);
 }
 
-
 int transpile(FILE *in_file, FILE *out_file) {
-
     /** Uncomment the line below to enable the debugging */
     //yydebug = 1;
 
@@ -156,5 +153,4 @@ int transpile(FILE *in_file, FILE *out_file) {
     free(footer_str);
 
     return status;
-
 }

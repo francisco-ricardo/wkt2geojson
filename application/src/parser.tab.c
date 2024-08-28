@@ -120,9 +120,9 @@ enum yysymbol_kind_t
   YYSYMBOL_point = 13,                     /* point  */
   YYSYMBOL_linestring = 14,                /* linestring  */
   YYSYMBOL_polygon = 15,                   /* polygon  */
-  YYSYMBOL_coordinate = 16,                /* coordinate  */
-  YYSYMBOL_coordinate_list = 17,           /* coordinate_list  */
-  YYSYMBOL_coordinate_list_list = 18       /* coordinate_list_list  */
+  YYSYMBOL_polygon_coordinates = 16,       /* polygon_coordinates  */
+  YYSYMBOL_coordinate = 17,                /* coordinate  */
+  YYSYMBOL_coordinate_list = 18            /* coordinate_list  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -458,7 +458,7 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  12
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   25
+#define YYLAST   26
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  10
@@ -467,7 +467,7 @@ union yyalloc
 /* YYNRULES -- Number of rules.  */
 #define YYNRULES  16
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  32
+#define YYNSTATES  34
 
 /* YYMAXUTOK -- Last valid token kind.  */
 #define YYMAXUTOK   261
@@ -518,7 +518,7 @@ static const yytype_int8 yytranslate[] =
 static const yytype_int8 yyrline[] =
 {
        0,    35,    35,    39,    40,    41,    42,    43,    44,    48,
-      63,    79,    95,   102,   107,   116,   121
+      63,    79,    95,   100,   109,   116,   121
 };
 #endif
 
@@ -536,8 +536,8 @@ static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "','", "NUMBER",
   "POINT", "LINESTRING", "POLYGON", "'('", "')'", "$accept", "geometry",
-  "geometry_list", "point", "linestring", "polygon", "coordinate",
-  "coordinate_list", "coordinate_list_list", YY_NULLPTR
+  "geometry_list", "point", "linestring", "polygon", "polygon_coordinates",
+  "coordinate", "coordinate_list", YY_NULLPTR
 };
 
 static const char *
@@ -561,10 +561,10 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-       0,    -5,     3,     4,    13,     0,   -20,   -20,   -20,    11,
-      11,     8,   -20,   -20,   -20,   -20,    14,    10,   -20,    -1,
-      11,   -20,   -20,    11,   -20,    17,     1,   -20,    11,    12,
-     -20,   -20
+      11,    -2,     5,     6,     7,    11,   -20,   -20,   -20,    15,
+      15,    12,   -20,   -20,   -20,   -20,    17,    13,   -20,    -1,
+      15,     0,   -20,   -20,    15,   -20,     1,    16,   -20,   -20,
+     -20,    15,     2,   -20
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -573,21 +573,21 @@ static const yytype_int8 yypact[] =
 static const yytype_int8 yydefact[] =
 {
        0,     0,     0,     0,     0,     2,     3,     4,     5,     0,
-       0,     0,     1,     6,     7,     8,     0,     0,    13,     0,
-       0,    12,     9,     0,    10,    15,     0,    14,     0,     0,
-      16,    11
+       0,     0,     1,     6,     7,     8,     0,     0,    15,     0,
+       0,     0,    14,     9,     0,    10,     0,     0,    11,    16,
+      12,     0,     0,    13
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -20,   -20,   -20,    18,    19,    20,    -9,   -19,   -20
+     -20,   -20,   -20,    18,    20,    21,   -20,    -9,   -19
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-       0,     4,     5,     6,     7,     8,    18,    19,    26
+       0,     4,     5,     6,     7,     8,    21,    18,    19
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -595,16 +595,16 @@ static const yytype_int8 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-      17,    25,    23,     9,    28,     1,     2,     3,    24,    30,
-      29,    10,    11,    12,    27,    16,    20,     0,    21,    22,
-      23,    31,     0,    13,    14,    15
+      17,    26,    24,    27,    24,    24,     9,    12,    25,    28,
+      30,    33,    32,    10,    11,    29,     1,     2,     3,    16,
+      20,    22,    23,    13,    31,    14,    15
 };
 
 static const yytype_int8 yycheck[] =
 {
-       9,    20,     3,     8,     3,     5,     6,     7,     9,    28,
-       9,     8,     8,     0,    23,     4,     8,    -1,     4,     9,
-       3,     9,    -1,     5,     5,     5
+       9,    20,     3,     3,     3,     3,     8,     0,     9,     9,
+       9,     9,    31,     8,     8,    24,     5,     6,     7,     4,
+       8,     4,     9,     5,     8,     5,     5
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
@@ -612,23 +612,23 @@ static const yytype_int8 yycheck[] =
 static const yytype_int8 yystos[] =
 {
        0,     5,     6,     7,    11,    12,    13,    14,    15,     8,
-       8,     8,     0,    13,    14,    15,     4,    16,    16,    17,
-       8,     4,     9,     3,     9,    17,    18,    16,     3,     9,
-      17,     9
+       8,     8,     0,    13,    14,    15,     4,    17,    17,    18,
+       8,    16,     4,     9,     3,     9,    18,     3,     9,    17,
+       9,     8,    18,     9
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
        0,    10,    11,    12,    12,    12,    12,    12,    12,    13,
-      14,    15,    16,    17,    17,    18,    18
+      14,    15,    16,    16,    17,    18,    18
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr2[] =
 {
        0,     2,     1,     1,     1,     1,     2,     2,     2,     4,
-       4,     6,     2,     1,     3,     1,     3
+       4,     4,     3,     5,     2,     1,     3
 };
 
 
@@ -1124,10 +1124,10 @@ yyreduce:
 #line 1125 "parser.tab.c"
     break;
 
-  case 11: /* polygon: POLYGON '(' '(' coordinate_list_list ')' ')'  */
+  case 11: /* polygon: POLYGON '(' polygon_coordinates ')'  */
 #line 80 "parser.y"
     {
-        (yyval.sval) = to_geojson_polygon((yyvsp[-2].sval));
+        (yyval.sval) = to_geojson_polygon((yyvsp[-1].sval));
         count++;
         if (count > 1) {
             fprintf(y_output_file, ",%s\n", (yyval.sval));    
@@ -1135,40 +1135,40 @@ yyreduce:
             fprintf(y_output_file, "%s\n", (yyval.sval));
         }
 
-        free((yyvsp[-2].sval));
+        free((yyvsp[-1].sval));
         free((yyval.sval));
     }
 #line 1142 "parser.tab.c"
     break;
 
-  case 12: /* coordinate: NUMBER NUMBER  */
+  case 12: /* polygon_coordinates: '(' coordinate_list ')'  */
 #line 96 "parser.y"
     {
+        (yyval.sval) = strdup((yyvsp[-1].sval));
+        free((yyvsp[-1].sval));
+    }
+#line 1151 "parser.tab.c"
+    break;
+
+  case 13: /* polygon_coordinates: polygon_coordinates ',' '(' coordinate_list ')'  */
+#line 101 "parser.y"
+    {
+        write_string(&(yyval.sval), "%s, %s", (yyvsp[-4].sval), (yyvsp[-1].sval));
+        free((yyvsp[-4].sval));
+        free((yyvsp[-1].sval));
+    }
+#line 1161 "parser.tab.c"
+    break;
+
+  case 14: /* coordinate: NUMBER NUMBER  */
+#line 110 "parser.y"
+    {
         write_string(&(yyval.sval), "[%f, %f]", (yyvsp[-1].dval), (yyvsp[0].dval));
-    }
-#line 1150 "parser.tab.c"
-    break;
-
-  case 13: /* coordinate_list: coordinate  */
-#line 103 "parser.y"
-    {
-        (yyval.sval) = strdup((yyvsp[0].sval));
-        free((yyvsp[0].sval));
-    }
-#line 1159 "parser.tab.c"
-    break;
-
-  case 14: /* coordinate_list: coordinate_list ',' coordinate  */
-#line 108 "parser.y"
-    {
-        write_string(&(yyval.sval), "%s, %s", (yyvsp[-2].sval), (yyvsp[0].sval));
-        free((yyvsp[-2].sval));
-        free((yyvsp[0].sval));
     }
 #line 1169 "parser.tab.c"
     break;
 
-  case 15: /* coordinate_list_list: coordinate_list  */
+  case 15: /* coordinate_list: coordinate  */
 #line 117 "parser.y"
     {
         (yyval.sval) = strdup((yyvsp[0].sval));
@@ -1177,7 +1177,7 @@ yyreduce:
 #line 1178 "parser.tab.c"
     break;
 
-  case 16: /* coordinate_list_list: coordinate_list_list ',' coordinate_list  */
+  case 16: /* coordinate_list: coordinate_list ',' coordinate  */
 #line 122 "parser.y"
     {
         write_string(&(yyval.sval), "%s, %s", (yyvsp[-2].sval), (yyvsp[0].sval));
@@ -1384,14 +1384,11 @@ yyreturnlab:
 #line 129 "parser.y"
 
 
-
 void yyerror(const char *s) {
     fprintf(stderr, "Error: %s\n", s);
 }
 
-
 int transpile(FILE *in_file, FILE *out_file) {
-
     /** Uncomment the line below to enable the debugging */
     //yydebug = 1;
 
@@ -1412,5 +1409,4 @@ int transpile(FILE *in_file, FILE *out_file) {
     free(footer_str);
 
     return status;
-
 }

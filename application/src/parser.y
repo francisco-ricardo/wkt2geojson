@@ -1,3 +1,44 @@
+/**
+ * WKT Parser
+ *
+ * The parser is a component of the transpiler that reads a 
+ * `WKT` file and translates it into a `GeoJSON` file.
+ *
+ * Well-known text (WKT) is a text markup language for representing 
+ * vector geometry objects (Wikipedia, 2024). 
+ * 
+ * GeoJSON is a standard format, based on the JSON format, designed 
+ * for representing simple geographical features, along with their 
+ * non-spatial attributes (Wikipedia, 2024).  
+ *
+ * The parser defines a BNF grammar and the production rules to
+ * generate an LR algorithm parser in C language 
+ * (`parser.tab.h` and `parser.tab.c`) from the `bison` tool.
+ * The algorithm can recognize the `WKT` records based 
+ * on the tokens generated from the scanner.
+ *
+ * The parser also defines the production rules set.
+ * The production rules extract data according to the records structure 
+ * and populate the `GeoJSON` object.
+ * After processing all the tokens generated from the scanner
+ * the parser will save the `GeoJSON` object into the output file.
+ *
+ * The parser exports the `feat_transpile` function.
+ * The caller has to specify 3 arguments: input file, log file, and
+ * output file.
+ * The bison debug mode can be activated by defining the variable 
+ * yydebug to 1 on feat_transpile function.
+ *
+ * The global static pointer named `y_feat_list` is a `gjs_feat_list_t`
+ * pointer. It will hold the `GeoJSON` data extracted from the input.
+ *
+ * The static function named `clear_token` cleans the token, 
+ * by removing white spaces and newlines characters. 
+ * The scanner implemented by the `flex` tool is greedy and 
+ * the tokens may be dirty.
+*/
+
+
 %{
 #include <stdio.h>
 #include <string.h>

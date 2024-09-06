@@ -1,8 +1,8 @@
 # ABSTRACT: Compilation and test targets
 #
-# make help
+# Help: make help
 #
-.PHONY: all build compile clean test2 test help
+.PHONY: all build compile clean test help
 
 CONTAINER ?= wkt2geojson
 
@@ -71,30 +71,6 @@ parser.tab.h:
 
 
 # target: test - Compile the `test` program and run into a Valgrind sandbox for testing
-test2: clean lex.yy.c parser.tab.h
-	rm -f test
-	rm -f test.json
-
-	gcc $(GCC_FLAGS) \
-		-o $(APP_ROOT_DIR)/application/bin/test \
-		wkt2geojson.c \
-		parser.tab.c \
-		lex.yy.c \
-		gjs.c
-
-	$(APP_ROOT_DIR)/application/bin/test
-
-	valgrind --trace-children=yes \
-		--track-fds=yes \
-		--track-origins=yes \
-		--leak-check=full \
-		--show-leak-kinds=all \
-		$(APP_ROOT_DIR)/application/bin/test \
-		$(APP_ROOT_DIR)/application/samples/wkt/ex1 \
-		$(APP_ROOT_DIR)/tmp/test.log \
-		$(APP_ROOT_DIR)/tmp/test.json
-
-# target: test - Compile the `test` program and run into a Valgrind sandbox for testing
 test: clean lex.yy.c parser.tab.h
 
 	gcc $(GCC_FLAGS) \
@@ -102,8 +78,8 @@ test: clean lex.yy.c parser.tab.h
 		wkt2geojson.c \
 		parser.tab.c \
 		lex.yy.c \
-		writer.c \
-		-lfl
+		writer.c 
+	chmod 0755 test
 
 	valgrind --trace-children=yes \
 		--track-fds=yes \

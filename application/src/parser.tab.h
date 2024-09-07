@@ -66,7 +66,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 10 "parser.y"
+#line 39 "parser.y"
 
     double dval;
     char* sval;
@@ -86,7 +86,7 @@ extern YYSTYPE yylval;
 int yyparse (void);
 
 /* "%code provides" blocks.  */
-#line 15 "parser.y"
+#line 44 "parser.y"
 
   int transpile(FILE *in_file, FILE *out_file);
 

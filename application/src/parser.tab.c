@@ -67,7 +67,7 @@
 
 
 /* First part of user prologue.  */
-#line 1 "parser.y"
+#line 30 "parser.y"
 
 #include <stdio.h>
 #include <string.h>
@@ -129,7 +129,7 @@ typedef enum yysymbol_kind_t yysymbol_kind_t;
 
 
 /* Unqualified %code blocks.  */
-#line 19 "parser.y"
+#line 48 "parser.y"
 
     extern FILE *yyin;
     static int count = 0;
@@ -515,10 +515,10 @@ static const yytype_int8 yytranslate[] =
 
 #if YYDEBUG
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
-static const yytype_int8 yyrline[] =
+static const yytype_uint8 yyrline[] =
 {
-       0,    35,    35,    39,    40,    41,    42,    43,    44,    48,
-      63,    79,    95,   100,   109,   116,   121
+       0,    64,    64,    68,    69,    70,    71,    72,    73,    77,
+      92,   108,   124,   129,   138,   145,   150
 };
 #endif
 
@@ -1092,12 +1092,12 @@ yyreduce:
   switch (yyn)
     {
   case 9: /* point: POINT '(' coordinate ')'  */
-#line 49 "parser.y"
+#line 78 "parser.y"
     {
         (yyval.sval) = to_geojson_point((yyvsp[-1].sval));
         count++;
         if (count > 1) {
-            fprintf(y_output_file, ",%s\n", (yyval.sval));    
+            fprintf(y_output_file, ",%s\n", (yyval.sval));
         } else {
             fprintf(y_output_file, "%s\n", (yyval.sval));
         }
@@ -1108,12 +1108,12 @@ yyreduce:
     break;
 
   case 10: /* linestring: LINESTRING '(' coordinate_list ')'  */
-#line 64 "parser.y"
+#line 93 "parser.y"
     {
-        (yyval.sval) = to_geojson_linestring((yyvsp[-1].sval));        
+        (yyval.sval) = to_geojson_linestring((yyvsp[-1].sval));
         count++;
         if (count > 1) {
-            fprintf(y_output_file, ",%s\n", (yyval.sval));    
+            fprintf(y_output_file, ",%s\n", (yyval.sval));
         } else {
             fprintf(y_output_file, "%s\n", (yyval.sval));
         }
@@ -1125,12 +1125,12 @@ yyreduce:
     break;
 
   case 11: /* polygon: POLYGON '(' polygon_coordinates ')'  */
-#line 80 "parser.y"
+#line 109 "parser.y"
     {
         (yyval.sval) = to_geojson_polygon((yyvsp[-1].sval));
         count++;
         if (count > 1) {
-            fprintf(y_output_file, ",%s\n", (yyval.sval));    
+            fprintf(y_output_file, ",%s\n", (yyval.sval));
         } else {
             fprintf(y_output_file, "%s\n", (yyval.sval));
         }
@@ -1142,7 +1142,7 @@ yyreduce:
     break;
 
   case 12: /* polygon_coordinates: '(' coordinate_list ')'  */
-#line 96 "parser.y"
+#line 125 "parser.y"
     {
         (yyval.sval) = strdup((yyvsp[-1].sval));
         free((yyvsp[-1].sval));
@@ -1151,7 +1151,7 @@ yyreduce:
     break;
 
   case 13: /* polygon_coordinates: polygon_coordinates ',' '(' coordinate_list ')'  */
-#line 101 "parser.y"
+#line 130 "parser.y"
     {
         write_string(&(yyval.sval), "%s, %s", (yyvsp[-4].sval), (yyvsp[-1].sval));
         free((yyvsp[-4].sval));
@@ -1161,7 +1161,7 @@ yyreduce:
     break;
 
   case 14: /* coordinate: NUMBER NUMBER  */
-#line 110 "parser.y"
+#line 139 "parser.y"
     {
         write_string(&(yyval.sval), "[%f, %f]", (yyvsp[-1].dval), (yyvsp[0].dval));
     }
@@ -1169,7 +1169,7 @@ yyreduce:
     break;
 
   case 15: /* coordinate_list: coordinate  */
-#line 117 "parser.y"
+#line 146 "parser.y"
     {
         (yyval.sval) = strdup((yyvsp[0].sval));
         free((yyvsp[0].sval));
@@ -1178,7 +1178,7 @@ yyreduce:
     break;
 
   case 16: /* coordinate_list: coordinate_list ',' coordinate  */
-#line 122 "parser.y"
+#line 151 "parser.y"
     {
         write_string(&(yyval.sval), "%s, %s", (yyvsp[-2].sval), (yyvsp[0].sval));
         free((yyvsp[-2].sval));
@@ -1381,7 +1381,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 129 "parser.y"
+#line 158 "parser.y"
 
 
 void yyerror(const char *s) {

@@ -45,9 +45,9 @@ This converter project was utilized during the research for the master's thesis 
 
    git clone https://github.com/yourusername/wkt2geojson.git
    cd wkt2geojson
-   
+
    docker-compose -f compose-prod.yaml up --build
- 
+
    ```
 
 2. **Build the Project:**
@@ -96,3 +96,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 "type": "FeatureCollection",
 "features": []
 }
+
+considerar pipeline com jq
+documentar sobre o writer

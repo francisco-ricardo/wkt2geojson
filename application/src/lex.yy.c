@@ -459,11 +459,51 @@ int yy_flex_debug = 0;
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
 #line 1 "scanner.l"
-#line 2 "scanner.l"
+/**
+ * WKT Scanner
+ *
+ * This scanner is responsible for tokenizing the input WKT file.
+ * It generates a Finite State Automaton (FSA) using the `flex` tool, 
+ * which produces a C-based lexical analyzer (`lex.yy.c`).
+ *
+ * The scanner recognizes WKT tokens and feeds them to the parser for 
+ * further processing. It reads the input character by character and 
+ * groups them into tokens based on predefined regular expressions.
+ *
+ * The key function exported by the scanner is `yylex`, which is 
+ * responsible for returning the next token in the input stream. 
+ * Each token is associated with a specific type, as defined in the 
+ * parser's token declarations (`parser.tab.h`), and contains the 
+ * corresponding lexical value.
+ *
+ * The scanner is designed to work in conjunction with a Bison parser, 
+ * which processes the tokens according to the grammar rules defined 
+ * in the parser.
+ *
+ * Some key features of the scanner:
+ * 
+ * - **Greedy token recognition**: The scanner always attempts to 
+ *   match the longest possible token in the input.
+ * - **Whitespace and comments**: Whitespace characters (spaces, 
+ *   tabs, newlines) are ignored, and comments (in a predefined 
+ *   format) are skipped entirely.
+ * - **Error handling**: If an invalid token is encountered, 
+ *   the scanner triggers an error, which is handled by the parser.
+ *
+ * The scanner also defines the function `yywrap`, which is responsible 
+ * for indicating the end of the input. By default, `yywrap` returns 1 
+ * when the scanner reaches the end of the input, allowing the parser 
+ * to finish processing.
+ *
+ * Additionally, the scanner keeps track of the current line number and 
+ * position in the input file, which is useful for debugging and error 
+ * reporting.
+ */
+#line 43 "scanner.l"
 #include "parser.tab.h"
-#line 465 "lex.yy.c"
+#line 505 "lex.yy.c"
 #define YY_NO_INPUT 1
-#line 467 "lex.yy.c"
+#line 507 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -678,9 +718,9 @@ YY_DECL
 		}
 
 	{
-#line 7 "scanner.l"
+#line 48 "scanner.l"
 
-#line 684 "lex.yy.c"
+#line 724 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -739,56 +779,56 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 8 "scanner.l"
+#line 49 "scanner.l"
 { return POINT; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 9 "scanner.l"
+#line 50 "scanner.l"
 { return LINESTRING; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 10 "scanner.l"
+#line 51 "scanner.l"
 { return POLYGON; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 11 "scanner.l"
+#line 52 "scanner.l"
 { yylval.dval = atof(yytext); return NUMBER; }
 	YY_BREAK
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 12 "scanner.l"
+#line 53 "scanner.l"
 { /* ignore whitespaces and linebreaks */ }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 13 "scanner.l"
+#line 54 "scanner.l"
 { return ','; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 14 "scanner.l"
+#line 55 "scanner.l"
 { return '('; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 15 "scanner.l"
+#line 56 "scanner.l"
 { return ')'; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 16 "scanner.l"
+#line 57 "scanner.l"
 { return yytext[0]; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 17 "scanner.l"
+#line 58 "scanner.l"
 ECHO;
 	YY_BREAK
-#line 792 "lex.yy.c"
+#line 832 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1756,7 +1796,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 17 "scanner.l"
+#line 58 "scanner.l"
 
 
 int yywrap(void) {

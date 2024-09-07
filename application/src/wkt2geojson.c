@@ -15,6 +15,13 @@
  * and parser to process the WKT data and produce a valid
  * GeoJSON output.
  *
+ * The output GeoJSON file is valid but may not be formatted for
+ * readability. To format the output in a more readable way, it can
+ * be piped through a JSON beautifier tool, such as `jq` or `json_pp`.
+ * For example:
+ *
+ *   ./wkt2geojson < input.wkt | jq . > output.geojson
+ *
  * Command-Line Options:
  *
  * - `-i <file>`: Specifies the input file.
@@ -68,7 +75,12 @@
  * - `main`: Entry point for the program. Handles argument parsing,
  *   file I/O, and invocation of the parser.
  *
+ * License:
+ * This project is licensed under the MIT License. See the LICENSE file
+ * for more details.
+ *
  */
+
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,10 +1,10 @@
 #!/bin/sh
 
-# ABSTRACT: Script de inicializacao do container
+# ABSTRACT: Container start script
 #
-# "Mas ele foi traspassado pelas nossas transgressoes e moido pelas nossas
-# iniquidades; o castigo que nos traz a paz estava sobre ele, e pelas
-# suas pisaduras fomos sarados." Isaias 53.5
+# "But he was wounded for our transgressions, he was bruised
+#   for our iniquities: the chastisement of our peace was upon him;
+#   and with his stripes we are healed." Isaiah 53:5 (KJV)
 
 while true; do sleep 1; done
 

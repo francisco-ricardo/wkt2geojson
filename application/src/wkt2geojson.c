@@ -139,7 +139,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    /** Run the parser */
+    // Run the parser
     int status = 1;
     if (!transpile(input_fp, output_fp)) {
         status = 0;

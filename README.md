@@ -113,3 +113,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - instrucoes para
 - considerar pipeline com jq
 - considerar logrotate
+- enfatizar que e multiplataorma (linux, windows, mac)
+- enfatizar que necessita somente do docker
+- deixar claro para uque o usuario clone e execute
+- deve ter todas as secoes recomendadas para um bom portfolio
+- considerar que sera avaliado por recrutadores

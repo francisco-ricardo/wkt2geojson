@@ -97,5 +97,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 "features": []
 }
 
-considerar pipeline com jq
-documentar sobre o writer
+- detalhar sobre wkt
+- detalhar sobre geojson
+- detalhar sobre flex, bison e algoritmos lr
+- acrescentar referencias
+- considerar dissertacao
+- considerar arquivo cobem
+- instrucoes para clonar o repo
+- diferenca entre dev e prod
+- instrucoes para build a imagem
+- instrucoes para subir o container (se desejado)
+- instrucoes para executar a partir do container
+- instrucoes para executar a partir do host com o uso do script
+  - nesse caso nao necessita do container, apenas da imagem
+- instrucoes para
+- considerar pipeline com jq
+- considerar logrotate

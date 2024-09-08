@@ -76,7 +76,7 @@ compile: lex.yy.c parser.tab.h
 		wkt2geojson.c \
 		parser.tab.c \
 		lex.yy.c \
-		gjs.c
+		writer.c
 	chmod 0755 $(APP_ROOT_DIR)/application/bin/wkt2geojson
 
 

@@ -102,7 +102,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - detalhar sobre flex, bison e algoritmos lr
 - acrescentar referencias
 - considerar dissertacao
+  https://doi.org/10.13140/RG.2.2.27115.76322
 - considerar arquivo cobem
+  https://www.researchgate.net/publication/357079212_TRANSPILATION_FROM_NC_FILES_TO_CANONICAL_MACHINING_FUNCTIONS/citations
 - instrucoes para clonar o repo
 - diferenca entre dev e prod
 - instrucoes para build a imagem

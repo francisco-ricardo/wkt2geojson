@@ -19,7 +19,7 @@
 - **Lexical Analysis** is the process of dividing input text into lexical units called tokens. It is the first phase of a compiler or interpreter where the input is transformed into a sequence of tokens representing basic elements of the code. In the WKT2GeoJSON project, the lexical analyzer is generated using Flex, which identifies and classifies tokens from the WKT input.
   - **Reference:** Aho, A. V., Sethi, R., & Ullman, J. D. (2006). *Compilers: Principles, Techniques, and Tools* (2nd ed.). Addison-Wesley.
 
-**Syntax Analysis** involves analyzing the grammatical structure of the token input, verifying that the token sequence follows the defined grammar. A parser is used to construct a syntax tree that represents the hierarchical structure of the code. In WKT2GeoJSON, syntax analysis is performed using Bison, which builds a parse tree from the tokens produced by the lexical analysis.
+- **Syntax Analysis** involves analyzing the grammatical structure of the token input, verifying that the token sequence follows the defined grammar. A parser is used to construct a syntax tree that represents the hierarchical structure of the code. In WKT2GeoJSON, syntax analysis is performed using Bison, which builds a parse tree from the tokens produced by the lexical analysis.
   - **Reference:** Grune, D., & Jacobs, C. J. (2007). *Parsing Techniques: A Practical Guide*. Springer.
 
 - **LR Algorithms** are a class of parsing algorithms that use an efficient technique for syntax analysis of context-free grammars. The LR algorithm is used to handle more complex grammars and is capable of parsing most syntactical structures used in programming languages. In WKT2GeoJSON, Bison generates the parser using the LR approach to process the WKT grammar.
@@ -30,6 +30,7 @@
 The methodology utilized in this project has also been employed in the following research studies:
 
 - **Master's Dissertation**: *Overcoming Synchronization Challenges in Machining Digital Twins: Transpiling Legacy NC Dialects to Enhance Interoperability* by Francisco Ricardo Taborda Aguiar. [Available here](https://doi.org/10.13140/RG.2.2.27115.76322).
+
 - **COBEM 2021 Article**: *Transpilation from NC Files to Canonical Machining Functions*
 by Francisco Ricardo Taborda Aguiar. [Available here](https://www.researchgate.net/publication/357079212_TRANSPILATION_FROM_NC_FILES_TO_CANONICAL_MACHINING_FUNCTIONS).
 

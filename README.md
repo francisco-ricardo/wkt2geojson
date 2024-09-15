@@ -164,6 +164,8 @@ make test
 ```
 
 These commands read WKT data from `input.wkt` and write the corresponding GeoJSON to `output.geojson`.
+If the input file cannot be opened, an error message is printed, and the program exits with a status of 1.
+If the output file cannot be opened, an error message is printed, and the program exits with a status of 1.
 If any of the file options are omitted, the program defaults to using `stdin` and `stdout`.
 
 The `getopt` function is used to parse the command-line options. The available options are:
@@ -171,19 +173,6 @@ The `getopt` function is used to parse the command-line options. The available o
 - -i: Specifies the input file path.
 - -o: Specifies the output file path.
 - -h: Prints the help message and exits.
-
-The program flow is as follows:
-
-1. Command-line arguments are processed using `getopt`.
-2. The input file is opened (or stdin is used if no file is provided).
-3. The output file is opened (or stdout is used if no file is provided).
-4. The parser is invoked to transpile the WKT data into GeoJSON.
-5. After processing, the input and output files are closed (if they were opened).
-
-#### Error handling
-
-- If the input file cannot be opened, an error message is printed, and the program exits with a status of 1.
-- If the output file cannot be opened, an error message is printed, and the program exits with a status of 1.
 
 The output GeoJSON file is valid but may not be formatted for readability. To format the output in a more readable way, it can be piped through a JSON beautifier tool, such as `jq` or `json_pp`. For example:
 

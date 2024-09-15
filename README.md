@@ -173,3 +173,42 @@ The output GeoJSON file is valid but may not be formatted for readability. To fo
 ```bash
 ./wkt2geojson < input.wkt | jq . > output.geojson
 ```
+
+## File Structure
+
+```bash
+wkt2geojson/
+│
+├── application/
+│   ├── bin/                     # Binary output of the wkt2geojson transpiler
+│   ├── samples/                 # Sample WKT files
+│   ├── src/                     # Source files for the project
+│   │   ├── parser.y             # Bison grammar file for WKT parsing
+│   │   ├── scanner.l            # Flex lexer file for tokenizing WKT
+│   │   ├── wkt2geojson.c        # Main C source file for the transpiler
+│   │   ├── writer.c             # Helper functions to write GeoJSON output
+│   │   ├── Makefile             # Build system for the C project
+│
+├── scripts/                     # Helper scripts to run wkt2geojson in Docker
+│   ├── run-wkt2geojson.sh       # Bash script for running the tool
+│   └── run-wkt2geojson.bat      # Batch script for Windows users
+│
+├── Dockerfile.dev                # Dockerfile for development environment
+├── Dockerfile.prod               # Dockerfile for production environment
+├── compose-dev.yaml              # Docker Compose file for development
+├── compose-prod.yaml             # Docker Compose file for production
+└── README.md                     # This README file
+```
+
+## Contributing
+
+We welcome contributions! Please fork the repository and submit a pull request with your improvements.
+Before submitting, make sure to:
+
+- Follow the code style guidelines in the project.
+- Run tests to ensure nothing is broken.
+- Document any new features or changes.
+
+## LICENSE
+
+This project is licensed under the MIT License. See the LICENSE file for details.

@@ -208,12 +208,12 @@ wkt2geojson/
 
 ## Contributing
 
-We welcome contributions! Please fork the repository and submit a pull request with your improvements.
-Before submitting, make sure to:
+We welcome contributions and encourage you to fork the repository and submit pull requests with your improvements.
+This project is open-source and free to clone and modify. Before submitting your contributions, please ensure the following:
 
-- Follow the code style guidelines in the project.
-- Run tests to ensure nothing is broken.
-- Document any new features or changes.
+- **Follow Code Style Guidelines:** Adhere to the project's coding standards and style guidelines.
+- **Run Tests:** Make sure all tests pass to ensure that nothing is broken by your changes.
+- **Document Changes:** Clearly document any new features or changes made.
 
 ## LICENSE
 

@@ -128,13 +128,13 @@ docker exec -it wkt2geojson bash
 
 *This command opens a terminal session inside the Docker container named `wkt2geojson`.*
 
-- Navigate to the app directory:
+- Navigate to the source files directory:
 
 ```bash
-cd /app
+cd /app/application/src
 ```
 
-*This command changes the current directory to /app inside the container, where the application files are located.*
+*This command changes the current directory to /app/application/src inside the container, where the source files are located.*
 
 #### Building the Project
 

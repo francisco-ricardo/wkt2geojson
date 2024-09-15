@@ -1,122 +1,99 @@
-# WKT to GEOJSON Converter
+# WKT2GeoJSON
 
-Welcome to the WKT to GEOJSON Converter repository!
+**WKT2GeoJSON** is a lightweight, command-line tool designed to convert Well-Known Text (WKT) data into GeoJSON format. This project includes a WKT parser written in C, developed using Flex and Bison. The tool is containerized for ease of use, allowing users to execute it within a Docker environment without manually handling dependencies.
 
-This project aims to convert Well-Known Text (WKT) files into GEOJSON format using lexical and syntactical analysis techniques. The implementation leverages the C programming language along with Flex and Bison for efficient parsing and translation. **Please note that this project is still in development and not yet complete.**
+## Key Features
 
-## Project Overview
+- **Efficient Parsing**: Translates WKT geometry data into valid GeoJSON format.
+- **Lightweight**: Minimal dependencies, optimized for performance.
+- **Dockerized**: Can be run easily in a Docker container, simplifying environment setup.
+- **Cross-Platform**: Works on Linux, macOS, and Windows with bash or batch script support.
+- **Extensible**: Can be extended to support additional spatial data formats in the future.
 
-### What is WKT?
+## What are WKT and GeoJSON?
 
-Well-Known Text (WKT) is a text markup language used for representing geometric objects. It is commonly used in geographic information systems (GIS) and spatial databases.
+- **Well-Known Text (WKT)** is a text markup language used to represent vector geometry objects, as defined by the Open Geospatial Consortium (OGC) ([Wikipedia, 2024](https://en.wikipedia.org/wiki/Well-known_text)).
+- **GeoJSON** is a standard format, based on JSON, for encoding a variety of geographic data structures, including simple geographical features and their non-spatial attributes ([Wikipedia, 2024](https://en.wikipedia.org/wiki/GeoJSON)).
 
-### What is GEOJSON?
+## Applications
 
-GEOJSON is a format for encoding a variety of geographic data structures using JavaScript Object Notation (JSON). It is widely used for web mapping and spatial data applications.
+The methodology used in this project has been applied in several contexts, including:
 
-### Features (Planned)
+- **Master's Dissertation**: *Overcoming Synchronization Challenges in Machining Digital Twins: Transpiling Legacy NC Dialects to Enhance Interoperability* by Francisco Ricardo Taborda Aguiar. [Available here](https://doi.org/10.13140/RG.2.2.27115.76322).
+- **COBEM 2021 Article**: *Transpilation from NC Files to Canonical Machining Functions*. [Available here](https://www.researchgate.net/publication/357079212_TRANSPILATION_FROM_NC_FILES_TO_CANONICAL_MACHINING_FUNCTIONS).
 
-- **Lexical Analysis**: To use Flex for scanning and tokenizing WKT input.
-- **Syntactical Analysis**: To employ Bison for parsing and constructing GEOJSON output.
-- **C Implementation**: Written in C for performance and efficiency.
-- **Conversion Accuracy**: Aiming to convert WKT geometries accurately into GEOJSON format.
+## Table of Contents
 
-## Current Status
+- [Installation](#installation)
+- [Usage](#usage)
+- [Development](#development)
+- [File Structure](#file-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
-**This project is currently under development and is not yet complete.** We are actively working on implementing the conversion features and refining the parsing process. Updates and improvements are ongoing.
-
-## Research Context
-
-This converter project was utilized during the research for the master's thesis of Francisco Ricardo Taborda Aguiar at the Federal University of Paraná. The thesis is titled **"Overcoming Synchronization Challenges in Machining Digital Twins: Transpiling Legacy NC Dialects to Enhance Interoperability."** The project played a role in addressing synchronization and interoperability issues by providing a tool for converting spatial data formats.
-
-## Getting Started
+## Installation
 
 ### Prerequisites
 
-- C compiler (e.g., GCC)
-- Flex
-- Bison
+- **Docker**: Ensure Docker is installed on your system. You can download Docker [here](https://www.docker.com/get-started).
 
-### Installation
-
-1. **Clone the Repository:**
-
-   ```bash
-
-   git clone https://github.com/yourusername/wkt2geojson.git
-   cd wkt2geojson
-
-   docker-compose -f compose-prod.yaml up --build
-
-   ```
-
-2. **Build the Project:**
-
-  ```bash
-  make
-  ```
-
-3. **Run the converter:**
-
-  ```bash
-  ./wkt2geojson input.wkt output.geojson
-  ```
-
-Replace input.wkt with your WKT file and output.geojson with the desired output GEOJSON file.
-
-Note: As the project is still in development, the functionality may be incomplete or subject to changes.
-
-## Usage
-
-Once the project is complete, you will be able to use the wkt2geojson executable to convert WKT files to GEOJSON. The command-line interface will accept an input WKT file and produce a GEOJSON file.
-
-Example:
+### Clone the Repository
 
 ```bash
-./wkt2geojson example.wkt example.geojson
+git clone https://github.com/yourusername/wkt2geojson.git
+cd wkt2geojson
 ```
 
-## Project Structure
+### Build the Docker Image
 
-- features.c: entry point
-- features.l: scanner
-- features.y: parser
-- lex.yy.c: FSA generated from scanner
-- features.tab.c: LR Parser generated from the parser
-- features.tab.h: LR Parser header
-- Makefile: targets
+You can build the development or production image using the respective Docker Compose files.
 
-## License
+- Development Build
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```bash
+docker-compose -f compose-dev.yaml up --build --detach
+```
 
-## TODO
+- Production Build
 
-{
-"type": "FeatureCollection",
-"features": []
-}
+```bash
+docker-compose -f compose-prod.yaml up --build --detach
+```
 
-- detalhar sobre wkt
-- detalhar sobre geojson
-- detalhar sobre flex, bison e algoritmos lr
-- acrescentar referencias
-- considerar dissertacao
-  https://doi.org/10.13140/RG.2.2.27115.76322
-- considerar arquivo cobem
-  https://www.researchgate.net/publication/357079212_TRANSPILATION_FROM_NC_FILES_TO_CANONICAL_MACHINING_FUNCTIONS/citations
-- instrucoes para clonar o repo
-- diferenca entre dev e prod
-- instrucoes para build a imagem
-- instrucoes para subir o container (se desejado)
-- instrucoes para executar a partir do container
-- instrucoes para executar a partir do host com o uso do script
-  - nesse caso nao necessita do container, apenas da imagem
-- instrucoes para
-- considerar pipeline com jq
-- considerar logrotate
-- enfatizar que e multiplataorma (linux, windows, mac)
-- enfatizar que necessita somente do docker
-- deixar claro para uque o usuario clone e execute
-- deve ter todas as secoes recomendadas para um bom portfolio
-- considerar que sera avaliado por recrutadores
+### Usage
+
+The tool provides shell and batch scripts to run wkt2geojson within a Docker container.
+These scripts allow for the easy processing of WKT files by specifying the file path as an argument.
+
+- Running the Tool on Linux or macOS
+
+You can run the tool using the run-wkt2geojson.sh script:
+
+```bash
+./scripts/run-wkt2geojson.sh /path/to/your/input.wkt
+```
+
+To see usage instructions, you can run:
+
+```bash
+./scripts/run-wkt2geojson.sh -h
+```
+
+- Running the Tool on Windows
+
+On Windows, you can use the run-wkt2geojson.bat script:
+
+```bash
+run-wkt2geojson.bat C:\path\to\your\input.wkt
+```
+
+
+
+
+
+
+
+
+
+
+

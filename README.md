@@ -17,7 +17,7 @@
 
 ## Applications
 
-The methodology used in this project has been applied during the following research:
+The methodology utilized in this project has also been employed in the following research studies:
 
 - **Master's Dissertation**: *Overcoming Synchronization Challenges in Machining Digital Twins: Transpiling Legacy NC Dialects to Enhance Interoperability* by Francisco Ricardo Taborda Aguiar. [Available here](https://doi.org/10.13140/RG.2.2.27115.76322).
 - **COBEM 2021 Article**: *Transpilation from NC Files to Canonical Machining Functions*. [Available here](https://www.researchgate.net/publication/357079212_TRANSPILATION_FROM_NC_FILES_TO_CANONICAL_MACHINING_FUNCTIONS).
@@ -132,7 +132,7 @@ Use the following command to build the project:
 make build
 ```
 
-This will clean old build files, compile the lexer and parser using Flex and Bison, and output the executable binary wkt2geojson.
+*This will clean old build files, compile the lexer and parser using Flex and Bison, and output the executable binary wkt2geojson.*
 
 #### Running Tests
 
@@ -142,7 +142,7 @@ A basic test is included, which compiles a test program and runs it under Valgri
 make test
 ```
 
-This will run the tests on the example WKT files under the samples directory.
+*This will run the tests on the example WKT files under the samples directory.*
 
 #### Usage examples:
 
@@ -150,6 +150,7 @@ This will run the tests on the example WKT files under the samples directory.
 ./wkt2geojson -i input.wkt -o output.geojson
 ./wkt2geojson < input.wkt > output.geojson
 ```
+
 This command reads WKT data from `input.wkt` and writes the corresponding GeoJSON to `output.geojson`.
 If any of the file options are omitted, the program defaults to using `stdin` and `stdout`.
 

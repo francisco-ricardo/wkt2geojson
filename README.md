@@ -10,10 +10,20 @@
 - **Cross-Platform**: Works on Linux, macOS, and Windows with bash or batch script support.
 - **Extensible**: Can be extended to support additional spatial data formats in the future.
 
-## What are WKT and GeoJSON?
+## Key Concepts and Technologies
 
 - **Well-Known Text (WKT)** is a text markup language used to represent vector geometry objects, as defined by the Open Geospatial Consortium (OGC) ([Wikipedia, 2024](https://en.wikipedia.org/wiki/Well-known_text)).
+
 - **GeoJSON** is a standard format, based on JSON, for encoding a variety of geographic data structures, including simple geographical features and their non-spatial attributes ([Wikipedia, 2024](https://en.wikipedia.org/wiki/GeoJSON)).
+
+- **Lexical Analysis** is the process of dividing input text into lexical units called tokens. It is the first phase of a compiler or interpreter where the input is transformed into a sequence of tokens representing basic elements of the code. In the WKT2GeoJSON project, the lexical analyzer is generated using Flex, which identifies and classifies tokens from the WKT input.
+  - **Reference:** Aho, A. V., Sethi, R., & Ullman, J. D. (2006). *Compilers: Principles, Techniques, and Tools* (2nd ed.). Addison-Wesley.
+
+**Syntax Analysis** involves analyzing the grammatical structure of the token input, verifying that the token sequence follows the defined grammar. A parser is used to construct a syntax tree that represents the hierarchical structure of the code. In WKT2GeoJSON, syntax analysis is performed using Bison, which builds a parse tree from the tokens produced by the lexical analysis.
+  - **Reference:** Grune, D., & Jacobs, C. J. (2007). *Parsing Techniques: A Practical Guide*. Springer.
+
+- **LR Algorithms** are a class of parsing algorithms that use an efficient technique for syntax analysis of context-free grammars. The LR algorithm is used to handle more complex grammars and is capable of parsing most syntactical structures used in programming languages. In WKT2GeoJSON, Bison generates the parser using the LR approach to process the WKT grammar.
+  - **Reference:** DeRemer, F., & Pennello, J. (1982). *Efficiently Computable Parsing Tables*. ACM SIGPLAN Notices.
 
 ## Applications
 

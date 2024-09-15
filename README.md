@@ -17,7 +17,7 @@
 
 ## Applications
 
-The methodology used in this project has been applied in several contexts, including:
+The methodology used in this project has been applied during the following research:
 
 - **Master's Dissertation**: *Overcoming Synchronization Challenges in Machining Digital Twins: Transpiling Legacy NC Dialects to Enhance Interoperability* by Francisco Ricardo Taborda Aguiar. [Available here](https://doi.org/10.13140/RG.2.2.27115.76322).
 - **COBEM 2021 Article**: *Transpilation from NC Files to Canonical Machining Functions*. [Available here](https://www.researchgate.net/publication/357079212_TRANSPILATION_FROM_NC_FILES_TO_CANONICAL_MACHINING_FUNCTIONS).
@@ -83,7 +83,7 @@ To see usage instructions, you can run:
 
 On Windows, you can use the run-wkt2geojson.bat script:
 
-```bash
+```bat
 run-wkt2geojson.bat C:\path\to\your\input.wkt
 ```
 
@@ -102,23 +102,27 @@ the C parser.
 
 The Dockerfile.dev is designed for development. It installs all necessary dependencies, including Valgrind, Flex, and Bison, ensuring you have a complete development environment in the container.
 
-Start the development container with:
+- Start the development container with:
 
 ```bash
 docker-compose -f compose-dev.yaml up --build --detach
 ```
 
-Connect to the container with:
+- Connect to the container with:
 
 ```bash
 docker exec -it wkt2geojson bash
 ```
 
-Enter to the app directory:
+*This command opens a terminal session inside the Docker container named `wkt2geojson`.*
+
+- Navigate to the app directory:
 
 ```bash
 cd /app
 ```
+
+*This command changes the current directory to /app inside the container, where the application files are located.*
 
 #### Building the Project
 

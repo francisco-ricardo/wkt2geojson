@@ -48,13 +48,13 @@ cd wkt2geojson
 
 You can build the development or production image using the respective Docker Compose files.
 
-- Development Build
+#### Development Build
 
 ```bash
 docker-compose -f compose-dev.yaml up --build --detach
 ```
 
-- Production Build
+#### Production Build
 
 ```bash
 docker-compose -f compose-prod.yaml up --build --detach
@@ -65,7 +65,7 @@ docker-compose -f compose-prod.yaml up --build --detach
 The tool provides shell and batch scripts to run wkt2geojson within a Docker container.
 These scripts allow for the easy processing of WKT files by specifying the file path as an argument.
 
-- Running the Tool on Linux or macOS
+#### Running the Tool on Linux or macOS
 
 You can run the tool using the run-wkt2geojson.sh script:
 
@@ -79,7 +79,7 @@ To see usage instructions, you can run:
 ./scripts/run-wkt2geojson.sh -h
 ```
 
-- Running the Tool on Windows
+#### Running the Tool on Windows
 
 On Windows, you can use the run-wkt2geojson.bat script:
 
@@ -106,6 +106,18 @@ Start the development container with:
 
 ```bash
 docker-compose -f compose-dev.yaml up --build --detach
+```
+
+Connect to the container with:
+
+```bash
+docker exec -it wkt2geojson bash
+```
+
+Enter to the app directory:
+
+```bash
+cd /app
 ```
 
 #### Building the Project
@@ -151,7 +163,7 @@ The program flow is as follows:
 4. The parser is invoked to transpile the WKT data into GeoJSON.
 5. After processing, the input and output files are closed (if they were opened).
 
-##### Error handling
+#### Error handling
 
 - If the input file cannot be opened, an error message is printed, and the program exits with a status of 1.
 - If the output file cannot be opened, an error message is printed, and the program exits with a status of 1.

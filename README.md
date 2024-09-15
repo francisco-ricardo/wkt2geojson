@@ -163,10 +163,10 @@ make test
 ./wkt2geojson < input.wkt > output.geojson
 ```
 
-This command reads WKT data from `input.wkt` and writes the corresponding GeoJSON to `output.geojson`.
+These commands read WKT data from `input.wkt` and write the corresponding GeoJSON to `output.geojson`.
 If any of the file options are omitted, the program defaults to using `stdin` and `stdout`.
 
-The getopt function is used to parse the command-line options. The available options are:
+The `getopt` function is used to parse the command-line options. The available options are:
 
 - -i: Specifies the input file path.
 - -o: Specifies the output file path.

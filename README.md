@@ -32,7 +32,8 @@ The methodology utilized in this project has also been employed in the following
 - **COBEM 2021 Article**: *Transpilation from NC Files to Canonical Machining Functions*
 by Francisco Ricardo Taborda Aguiar. [Available here](https://www.researchgate.net/publication/357079212_TRANSPILATION_FROM_NC_FILES_TO_CANONICAL_MACHINING_FUNCTIONS).
 
-- **Master's Dissertation**: *INTERPRETAÇÃO DOS DIALETOS RS274-D E EXTRAÇÃO DOS DADOSTEMPORAIS DA USINAGEM EM MÁQUINAS CNC* by Francisco Ricardo Taborda Aguiar. [Available here](https://doi.org/10.13140/RG.2.2.27115.76322).
+- **Master's Dissertation**: *Interpretation of RS274-D Dialects and Temporal Data Extraction in CNC Machines*
+by Francisco Ricardo Taborda Aguiar. [Available here](https://doi.org/10.13140/RG.2.2.27115.76322).
 
 ## Table of Contents
 

@@ -208,8 +208,7 @@ wkt2geojson/
 
 ## Contributing
 
-We welcome contributions and encourage you to fork the repository and submit pull requests with your improvements.
-This project is open-source and free to clone and modify. Before submitting your contributions, please ensure the following:
+We welcome contributions from the community! Feel free to fork this repository, clone it, and submit pull requests with your improvements or ideas. This project is open-source, and you are free to use, modify, and redistribute it under the terms of the license. To ensure smooth collaboration, please keep the following in mind:
 
 - **Follow Code Style Guidelines:** Adhere to the project's coding standards and style guidelines.
 - **Run Tests:** Make sure all tests pass to ensure that nothing is broken by your changes.
@@ -217,4 +216,4 @@ This project is open-source and free to clone and modify. Before submitting your
 
 ## LICENSE
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is released under the MIT License, meaning it is open-source and freely available for anyone to use, modify, and distribute. You are welcome to clone the repository, use it in your projects, and contribute back with improvements. See the LICENSE file for details.

@@ -1,8 +1,8 @@
-# WKT2GeoJSON
+# 🚀 WKT2GeoJSON
 
 **WKT2GeoJSON** is a lightweight, command-line tool designed to convert Well-Known Text (WKT) data into GeoJSON format. This project includes a WKT parser written in C, developed using Flex and Bison. The tool is containerized for ease of use, allowing users to execute it within a Docker environment without manually handling dependencies.
 
-## Key Features
+## ✨ Key Features
 
 - **Efficient Parsing**: Translates WKT geometry data into valid GeoJSON format.
 - **Lightweight**: Minimal dependencies, optimized for performance.
@@ -25,7 +25,7 @@
 - **LR Algorithms** are a class of parsing algorithms that use an efficient technique for syntax analysis of context-free grammars. The LR algorithm is used to handle more complex grammars and is capable of parsing most syntactical structures used in programming languages. In WKT2GeoJSON, Bison generates the parser using the LR approach to process the WKT grammar.
   - **Reference:** DeRemer, F., & Pennello, J. (1982). *Efficiently Computable Parsing Tables*. ACM SIGPLAN Notices.
 
-## Applications
+## 🌍 Applications
 
 The **WKT2GeoJSON** tool is ideal for **Geospatial Applications**, enabling 
 the conversion of Well-Known Text (WKT) data into GeoJSON format for use in 
@@ -41,7 +41,7 @@ by Francisco Ricardo Taborda Aguiar. [Available here](https://www.researchgate.n
 - **Master's Dissertation**: *Interpretation of RS274-D Dialects and Temporal Data Extraction in CNC Machines*
 by Francisco Ricardo Taborda Aguiar. [Available here](https://doi.org/10.13140/RG.2.2.27115.76322).
 
-## Table of Contents
+## 📖 Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -52,7 +52,7 @@ by Francisco Ricardo Taborda Aguiar. [Available here](https://doi.org/10.13140/R
 - [Lessons Learned](#lessons-learned)
 - [License](#license)
 
-## Installation
+## 🛠️ Installation
 
 ### Prerequisites
 
@@ -114,7 +114,7 @@ To see usage instructions, run:
 run-wkt2geojson.bat -h
 ```
 
-### Development
+### 🧑‍💻 Development
 
 If you're contributing or making changes to the code, the project uses a Makefile for building and testing
 the C parser.
@@ -189,7 +189,7 @@ The output GeoJSON file is valid but may not be formatted for readability. To fo
 ./wkt2geojson < input.wkt | jq . > output.geojson
 ```
 
-## File Structure
+## 🗂️ File Structure
 
 ```bash
 wkt2geojson/
@@ -222,7 +222,7 @@ The following improvements are planned for the project to enhance its functional
 - **Generate a DockerHub image**: Create a pre-built Docker image and publish it on DockerHub for easy distribution and usage.
 - **Automate CI/CD pipelines**: Set up continuous integration and deployment pipelines to automate testing and publishing of Docker images.
 
-## Contributing
+## 🤝 Contributing
 
 We welcome contributions from the community! Feel free to fork this repository, clone it, and submit pull requests with your improvements or ideas. This project is open-source, and you are free to use, modify, and redistribute it under the terms of the license. To ensure smooth collaboration, please keep the following in mind:
 
@@ -230,7 +230,7 @@ We welcome contributions from the community! Feel free to fork this repository, 
 - **Run Tests:** Make sure all tests pass to ensure that nothing is broken by your changes.
 - **Document Changes:** Clearly document any new features or changes made.
 
-## Lessons Learned
+## 📚 Lessons Learned
 
 The development of **WKT2GeoJSON** provided an opportunity to explore and apply several advanced computer science concepts and programming techniques, including:
 
@@ -247,6 +247,14 @@ The development of **WKT2GeoJSON** provided an opportunity to explore and apply 
 
 This project served as a comprehensive learning experience, combining theoretical knowledge with practical implementation in areas such as compiler design, geospatial data processing, and advanced programming techniques.
 
-## LICENSE
+## 📜 License
 
 This project is released under the MIT License, meaning it is open-source and freely available for anyone to use, modify, and distribute. You are welcome to clone the repository, use it in your projects, and contribute back with improvements. See the LICENSE file for details.
+
+## 📬 Contact
+
+If you have any questions or feedback, feel free to reach out:
+
+- **GitHub**: [francisco-ricardo](https://github.com/francisco-ricardo)
+- **Email**: franciscoricardo.dev@gmail.com
+- **LinkedIn**: [francisco-aguiar](www.linkedin.com/in/francisco-aguiar-3ab650a0)

@@ -27,6 +27,12 @@
 
 ## Applications
 
+The **WKT2GeoJSON** tool is ideal for **Geospatial Applications**, enabling 
+the conversion of Well-Known Text (WKT) data into GeoJSON format for use in 
+mapping, spatial analysis, and geographic data visualization. 
+Its efficient parsing and lightweight design make it suitable for integration 
+into GIS workflows and other geospatial data processing pipelines.
+
 The methodology utilized in this project has also been employed in the following research studies:
 
 - **COBEM 2021 Article**: *Transpilation from NC Files to Canonical Machining Functions*
@@ -41,7 +47,9 @@ by Francisco Ricardo Taborda Aguiar. [Available here](https://doi.org/10.13140/R
 - [Usage](#usage)
 - [Development](#development)
 - [File Structure](#file-structure)
+- [Future Enhancements](#future-enhancements)
 - [Contributing](#contributing)
+- [Lessons Learned](#lessons-learned)
 - [License](#license)
 
 ## Installation
@@ -221,6 +229,23 @@ We welcome contributions from the community! Feel free to fork this repository, 
 - **Follow Code Style Guidelines:** Adhere to the project's coding standards and style guidelines.
 - **Run Tests:** Make sure all tests pass to ensure that nothing is broken by your changes.
 - **Document Changes:** Clearly document any new features or changes made.
+
+## Lessons Learned
+
+The development of **WKT2GeoJSON** provided an opportunity to explore and apply several advanced computer science concepts and programming techniques, including:
+
+- **Advanced C Programming**: Mastered the use of tools such as Valgrind for memory management, Bison and Flex for grammar and lexical analysis, and Make for efficient linking and compilation.
+- **Advanced Programming in Linux**: Developed and debugged the project in a Linux environment, leveraging system-level tools and workflows.
+- **Regular Expressions and Scanning**: Used Flex to define and process regular expressions for tokenizing input data.
+- **Grammars and Parsing**: Designed and implemented custom grammars for parsing Well-Known Text (WKT) using formal grammar definitions.
+- **BNF Grammars**: Applied Backus-Naur Form (BNF) to define the syntax and structure of the WKT format.
+- **Abstract Syntax Trees (ASTs)**: Built and utilized ASTs to represent and manipulate the hierarchical structure of parsed data.
+- **LR Algorithms**: Implemented LR parsing algorithms for efficient syntax analysis and error handling.
+- **Compiler Construction**: Gained hands-on experience in building a transpiler, a specialized form of a compiler, for geospatial data formats.
+- **Coroutines**: Explored coroutine-like behavior by integrating Flex and Bison to handle scanning and parsing seamlessly.
+- **Geospatial File Formats**: Worked extensively with geospatial data formats such as WKT and GeoJSON, gaining a deep understanding of their structure, use cases, and applications.
+
+This project served as a comprehensive learning experience, combining theoretical knowledge with practical implementation in areas such as compiler design, geospatial data processing, and advanced programming techniques.
 
 ## LICENSE
 

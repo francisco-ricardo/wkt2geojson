@@ -2,6 +2,8 @@
 
 **WKT2GeoJSON** is a lightweight, command-line tool designed to convert Well-Known Text (WKT) data into GeoJSON format. This project includes a WKT parser written in C, developed using Flex and Bison. The tool is containerized for ease of use, allowing users to execute it within a Docker environment without manually handling dependencies.
 
+---
+
 ## ✨ Key Features
 
 - **Efficient Parsing**: Translates WKT geometry data into valid GeoJSON format.
@@ -9,6 +11,8 @@
 - **Dockerized**: Can be run easily in a Docker container, simplifying environment setup.
 - **Cross-Platform**: Works on Linux, macOS, and Windows with bash or batch script support.
 - **Extensible**: Can be extended to support additional spatial data formats in the future.
+
+---
 
 ## Key Concepts and Technologies
 
@@ -24,6 +28,8 @@
 
 - **LR Algorithms** are a class of parsing algorithms that use an efficient technique for syntax analysis of context-free grammars. The LR algorithm is used to handle more complex grammars and is capable of parsing most syntactical structures used in programming languages. In WKT2GeoJSON, Bison generates the parser using the LR approach to process the WKT grammar.
   - **Reference:** DeRemer, F., & Pennello, J. (1982). *Efficiently Computable Parsing Tables*. ACM SIGPLAN Notices.
+
+---
 
 ## 🌍 Applications
 
@@ -41,6 +47,8 @@ by Francisco Ricardo Taborda Aguiar. [Available here](https://www.researchgate.n
 - **Master's Dissertation**: *Interpretation of RS274-D Dialects and Temporal Data Extraction in CNC Machines*
 by Francisco Ricardo Taborda Aguiar. [Available here](https://doi.org/10.13140/RG.2.2.27115.76322).
 
+---
+
 ## 📖 Table of Contents
 
 - [Installation](#installation)
@@ -51,6 +59,8 @@ by Francisco Ricardo Taborda Aguiar. [Available here](https://doi.org/10.13140/R
 - [Contributing](#contributing)
 - [Lessons Learned](#lessons-learned)
 - [License](#license)
+
+---
 
 ## 🛠️ Installation
 
@@ -113,6 +123,8 @@ To see usage instructions, run:
 ```bash
 run-wkt2geojson.bat -h
 ```
+
+---
 
 ### 🧑‍💻 Development
 
@@ -189,6 +201,8 @@ The output GeoJSON file is valid but may not be formatted for readability. To fo
 ./wkt2geojson < input.wkt | jq . > output.geojson
 ```
 
+---
+
 ## 🗂️ File Structure
 
 ```bash
@@ -215,12 +229,16 @@ wkt2geojson/
 └── README.md                     # This README file
 ```
 
+---
+
 ## Future Enhancements
 
 The following improvements are planned for the project to enhance its functionality and usability:
 
 - **Generate a DockerHub image**: Create a pre-built Docker image and publish it on DockerHub for easy distribution and usage.
 - **Automate CI/CD pipelines**: Set up continuous integration and deployment pipelines to automate testing and publishing of Docker images.
+
+---
 
 ## 🤝 Contributing
 
@@ -229,6 +247,8 @@ We welcome contributions from the community! Feel free to fork this repository, 
 - **Follow Code Style Guidelines:** Adhere to the project's coding standards and style guidelines.
 - **Run Tests:** Make sure all tests pass to ensure that nothing is broken by your changes.
 - **Document Changes:** Clearly document any new features or changes made.
+
+---
 
 ## 📚 Lessons Learned
 
@@ -247,9 +267,13 @@ The development of **WKT2GeoJSON** provided an opportunity to explore and apply 
 
 This project served as a comprehensive learning experience, combining theoretical knowledge with practical implementation in areas such as compiler design, geospatial data processing, and advanced programming techniques.
 
+---
+
 ## 📜 License
 
 This project is released under the MIT License, meaning it is open-source and freely available for anyone to use, modify, and distribute. You are welcome to clone the repository, use it in your projects, and contribute back with improvements. See the LICENSE file for details.
+
+---
 
 ## 📬 Contact
 

@@ -271,7 +271,8 @@ This project served as a comprehensive learning experience, combining theoretica
 
 ## 📜 License
 
-This project is released under the MIT License, meaning it is open-source and freely available for anyone to use, modify, and distribute. You are welcome to clone the repository, use it in your projects, and contribute back with improvements. See the LICENSE file for details.
+This project is released under the MIT License, meaning it is open-source and freely available for anyone to use, modify, and distribute. You are welcome to clone the repository, use it in your projects, and contribute back with improvements. 
+See the [LICENSE](LICENSE) file for more details.
 
 ---
 

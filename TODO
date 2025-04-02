@@ -1,0 +1,3 @@
+- [ ] Generate a DockerHub image for easy distribution and usage.
+- [ ] Automate CI/CD pipelines for testing and Docker image publishing.
+- [ ] Review the README

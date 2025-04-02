@@ -207,6 +207,13 @@ wkt2geojson/
 └── README.md                     # This README file
 ```
 
+## Future Enhancements
+
+The following improvements are planned for the project to enhance its functionality and usability:
+
+- **Generate a DockerHub image**: Create a pre-built Docker image and publish it on DockerHub for easy distribution and usage.
+- **Automate CI/CD pipelines**: Set up continuous integration and deployment pipelines to automate testing and publishing of Docker images.
+
 ## Contributing
 
 We welcome contributions from the community! Feel free to fork this repository, clone it, and submit pull requests with your improvements or ideas. This project is open-source, and you are free to use, modify, and redistribute it under the terms of the license. To ensure smooth collaboration, please keep the following in mind:
